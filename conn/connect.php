@@ -14,6 +14,9 @@ try{
     $conn = new mysqli($host, $root, $pass, $database, $port);
     //Declarando o utf8 através da variável "$charset".
     mysqli_set_charset($conn, $charset);
+   
+    //Teste para a conexão com Banco de Dados.
+    # echo "connect right";
 }
 //Throwable é um objeto de excessão, a variável "$th" vai receber todos dados que deram erro durante o código.
 catch(Throwable $th){
