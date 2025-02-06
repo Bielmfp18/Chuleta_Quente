@@ -1,0 +1,15 @@
+/* Evitar caracteres estranhos no arquivo ao abrir */
+@charset "utf8";
+
+body{
+margin-top: 40px;
+padding-top:40px;
+}
+
+/* Ao usar ponto(.) você estar´determinando uma classe no CSS. */
+.fundofixo{
+    /* Chamando a imagem armazenada. */
+    background: url('../images/pexels-hasan-kurt-154798938-10749578.jpg') no-repeat fixed; /*no-repeat -> Para não repetir a imagem na página.*/ /*fixed -> Serve para fixar a imagem na página.*/
+    -webkit-background-size: cover;
+    background-size: cover;
+}
