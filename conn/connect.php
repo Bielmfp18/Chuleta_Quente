@@ -23,3 +23,4 @@ catch(Throwable $th){
     die("Atenção rolou um ERRO, Cara! ".$th);
 }
 ?>
+
