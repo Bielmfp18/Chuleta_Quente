@@ -23,7 +23,7 @@
      <?php include 'carrossel.php';?>
      <!-- Área de Destaque -->
       <a class="pt-6" name = "destaques">&nbsp;</a>
-      <?php include 'produtos_destque.php';?>
+      <?php include 'produtos_destaque.php';?>
      <!--Área geral de produtos -->
      <a class="pt-6" name = "produtos">&nbsp;</a>
      <!-- "include" pega todas as informações do arquivo e o adiciona ao local declarado no código html -->

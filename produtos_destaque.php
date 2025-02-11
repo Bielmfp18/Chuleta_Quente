@@ -1,67 +1,55 @@
 <?php 
 // arquivo de conexão de banco
-include 'connect.phpconnect.php';
+include 'conn/connect.php';
 $lista = $conn->query("select * from vw_produtos where destaque = 'Sim'");
-// consulta para trazer os dados se filtar
-
-
+$row_produto = $lista->fetch_assoc();
+$num_linhas = $lista->num_rows;
 ?>
+<!-- Mostrar se a consulta retornar vazio -->
+<?php if($num_linhas == 0){?>
+<h2 class="breadcrumb alert-danger">
+Não há produtos em destaque!
+</h2>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
-    <title>Detalhes Produto</title>
-</head>
-<body class="fundofixo">
-    
-    <div class="container">
-        <h2 class="breadcrumb alert-danger">
-            <a href="index.php">
-                <button class="btn btn-danger">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </button>
-                <!-- use a tag Nicolas <sddv> -->
-                <strong>Detalhes do Produto</strong>
-            </a>
-        </h2>
-        <div class="row">
-           
-                <div class="col-sm-12 col-md-12">
-                    <div class="thumbnail ">
-                        <a href="">
-                            <img 
-                                src="images/" 
-                                alt="" 
-                                class="img-responsive img-rounded" 
-                                style="height: 20em ;">
+<?php }?>
+<!-- // consulta para trazer os dados se filtar -->
+ <?php if($num_linhas > 0){?>
+
+ <h2 class="breadcrumb alert-danger">
+       Destaques
+    </h2>
+    <div class="row">
+      <?php do {  ?>  
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail ">
+                   <a href="produto_detalhes.php?id=<?php echo $row_produto['id'];?>">
+                       <img src="images/<?php echo $row_produto['imagem']?>" alt="" class="img-responsive img-rounded"> 
+                   </a> 
+                  <div class="caption text-right bg-danger"> 
+                    <h3 class="text-danger">
+                        <strong><?php echo $row_produto['descricao']?></strong>
+                    </h3>
+                    <p class="text-warning">
+                        <strong><?php echo mb_strimwidth($row_produto['resumo'],0,40,'...')?></strong>
+                    </p>
+                    <p class="text-left">
+                        
+                    </p>
+                    <p>
+                        <button class="btn btn-default disabled" role="button" style="cursor: default;">
+                            <?php echo "R$".number_format($row_produto['valor'],2,',','.')?>
+                        </button>
+                        <a href="produto_detalhes.php?id=<?php echo $row_produto['id'];?>">
+                            <span class="hidden-xs">Saiba mais..</span>
+                            <span class="hidden-xs glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                         </a>
-                        <div class="caption text-center">
-                            <h3 class="text-danger">
-                                <strong></strong>
-                            </h3>
-                            <p class="text-warning">
-                                <strong></strong>
-                            </p>
-                            <p class="text-center">
-                                <strong></strong>
-                            </p>
-                            <p>
-                                <a href="index.php" class="btn btn-danger" role="button">
-                                    <span class="hidden-xs">Retornar</span>
-                                    <span class="visible-xs glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>    
-             
-        </div>
+                    </p>
+                  </div>
+                </div>
+                
+            </div>
+      
     </div>
-    
-</body>
+     <?php }while($row_produto=$lista->fetch_assoc());?>
 </html>
+<?php }?>
