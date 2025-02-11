@@ -1,8 +1,8 @@
 <?php 
 // arquivo de conexão de banco
+include "conn/connect.php";
 
-
-// consulta para trazer os dados se filtar
+// consulta para trazer os dados se filtar (Destaques)
 
 
 ?>
