@@ -1,7 +1,7 @@
 <?php 
 // arquivo de conexão de banco
 include 'connect.phpconnect.php';
-
+$lista = $conn->query("select * from vw_produtos where destaque = 'Sim'");
 // consulta para trazer os dados se filtar
 
 
