@@ -1,5 +1,9 @@
-<?php
-
+<?php 
+include "conn/connect.php"; //Include trás todo os valores e conteúdos do arquivo selecionado.
+$lista_tipos = $conn->query("SELECT * FROM tipos order by rotulo");
+$rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associativa.
+var_dump($rows_tipos);//O var_dump está trazendo os valores da $rows da linha 46.
+// die();//Mata o processo;
 ?>
 <!-- BOOTSTRAP -->
     <!-- abre a barra de navegação -->  
@@ -16,7 +20,7 @@
                 </button>
                 <a href="index.php" class="navbar-brand">
                     <img src="images/logo-chuleta.png" alt="Logotipo Chuleta Quente">
-                </a>
+                </a> 
             </div>
             <!-- Fecha agrupamento Mobile -->
             <!-- nav direita -->
@@ -34,8 +38,18 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             TIPOS
                             <span class="caret"></span>
+
                         </a>
                         <ul class="dropdown-menu">
+                            <?php foreach($rows_tipos as $row){?>
+                                
+                                <li><a href="produtos_por_tipo.php?id_tipo=<?php echo $row[0].'&rotulo='.$row[2];?>">
+                                    <?php echo $row[2];?>
+                                </a></li> <!-- li>a + TAB -->
+                                <!-- <li id="jose"></li> li# + TAB -->
+                                 <!-- <li class="classe"></li> li. + TAB -->
+                                  <!--Vai trazer 8 tags <li> li*8 -->
+                                <?php }?>
                         
                         </ul>
                     </li>
