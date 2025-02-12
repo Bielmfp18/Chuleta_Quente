@@ -39,7 +39,7 @@ Não há produtos em destaque!
                         <button class="btn btn-default disabled" role="button" style="cursor: default;">
                             <?php echo "R$".number_format($row_produto['valor'],2,',','.')?>
                         </button>
-                        <a href="produto_detalhes.php?id=<?php echo $row_produto['id'];?>">
+                        <a href="produto_detalhes.php?id=<?php echo $row_produto['id']?>">
                             <span class="hidden-xs">Saiba mais..</span>
                             <span class="hidden-xs glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                         </a>
@@ -48,8 +48,8 @@ Não há produtos em destaque!
                 </div>
                 
             </div>
-      
+         <?php }while($row_produto=$lista->fetch_assoc());?>
     </div>
-     <?php }while($row_produto=$lista->fetch_assoc());?>
+  
 </html>
 <?php }?>
