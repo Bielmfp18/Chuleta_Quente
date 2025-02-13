@@ -33,7 +33,6 @@ Não há produtos em destaque!
                         <strong><?php echo mb_strimwidth($row_produto['resumo'],0,40,'...')?></strong>
                     </p>
                     <p class="text-left">
-                        
                     </p>
                     <p>
                         <button class="btn btn-default disabled" role="button" style="cursor: default;">
@@ -45,10 +44,11 @@ Não há produtos em destaque!
                         </a>
                     </p>
                   </div>
+
                 </div>
-                
             </div>
             <?php }while($row_produto=$lista->fetch_assoc());?>
     </div>
+
 
 <?php }?>
