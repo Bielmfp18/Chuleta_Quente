@@ -31,7 +31,7 @@ $num_linhas = $lista->num_rows;
                         <strong><?php echo $row_produtos['rotulo'] ?></strong>
                     </p>
                     <p class="text-left">
-                        <?php echo mb_strimwidth($row_produtos['resumo'],0,42,'...'); ?>
+                        <?php echo mb_strimwidth($row_produtos['resumo'],0,40,'...'); ?>
                     </p>
                     <p>
                         <button class="btn btn-default disabled" role="button" style="cursor: default;">
