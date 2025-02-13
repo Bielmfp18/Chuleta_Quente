@@ -48,8 +48,7 @@ Não há produtos em destaque!
                 </div>
                 
             </div>
-         <?php }while($row_produto=$lista->fetch_assoc());?>
+            <?php }while($row_produto=$lista->fetch_assoc());?>
     </div>
-  
-</html>
+
 <?php }?>
