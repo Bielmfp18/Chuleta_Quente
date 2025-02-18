@@ -28,7 +28,7 @@
                 <li><a href="usuarios_lista.php">USUÁRIOS</a></li>
                 <li class="active">
                     <a href="../index.php">
-                        <span class="glyphicon glyphicon-home"></span>
+                      <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
                 <li>
