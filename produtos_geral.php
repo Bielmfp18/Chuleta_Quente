@@ -8,6 +8,8 @@ $num_linhas = $lista->num_rows;
 // Se houver produtos, obtém o primeiro registro
 $row_produtos = ($num_linhas > 0) ? $lista->fetch_assoc() : null;
 ?>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  -->
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,7 +82,6 @@ $row_produtos = ($num_linhas > 0) ? $lista->fetch_assoc() : null;
     <?php } ?>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

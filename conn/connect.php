@@ -2,7 +2,7 @@
 
 $host = "127.0.0.1"; //Ou localhost
 $database = "tinsphpdb01";
-$root = "root";
+$user = "root";
 $pass = "";
 $charset = "utf8";
 $port = "3306";
@@ -11,7 +11,7 @@ $port = "3306";
 try{
     //Lembre dessa variável quando usar um comando SQL no PHP.
     //"$conn" é um objeto da classe mysqli do tipo SQL.
-    $conn = new mysqli($host, $root, $pass, $database, $port);
+    $conn = new mysqli($host, $user, $pass, $database, $port);
     //Declarando o utf8 através da variável "$charset".
     mysqli_set_charset($conn, $charset);
    
