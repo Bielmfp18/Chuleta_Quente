@@ -2,7 +2,7 @@
 include 'conn/connect.php';
 $idTipo = $_GET['id_tipo'];
 $rotulo = $_GET['rotulo'];
-$listaPorTipo = $conn->query('SELECT * FROM vw_produtos where tipo_id ='. $idTipo); //se tiver a expressão no conteudo ele vai trazer
+$listaPorTipo = $conn->query("SELECT * FROM vw_produtos where tipo_id = $idTipo AND rotulo = '$rotulo'"); //se tiver a expressão no conteudo ele vai trazer
 $rowPorTipo = $listaPorTipo->fetch_assoc();
 $numLinhas = $listaPorTipo->num_rows;
  
@@ -34,7 +34,7 @@ $numLinhas = $listaPorTipo->num_rows;
             </h2>
         <?php } ?>
         <!-- mostrar se a consulta retornou produtos  -->
-        <?php if ($numLinhas > 1) { ?>
+        <?php if ($numLinhas > 0) { ?>
             <h2 class="breadcrumb alert-danger">
                 <a href="javascript:window.history.go(-1)" class="btn btn-danger">
                     <span class="glyphicon glyphicon-chevron-left"></span>
