@@ -61,7 +61,7 @@ $numLinhas = $lista_busca->num_rows;
                                     <button class="btn btn-default disabled" role="button" style="cursor:default;">
                                     <?php echo "R$ ".number_format($linhaBusca['valor'],2,',','.');?>
                                     </button>
-                                    <a href="produto_detalhes.php?id=<?php echo $linhaBusca['id']; ?>">
+                                    <a href="produto_detalhes.php?id=<?php echo $linhaBusca['id_tipo']; ?>">
                                         <span class="hidden-xs">Saiba mais...</span>
                                         <span class="hidden-xs glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
