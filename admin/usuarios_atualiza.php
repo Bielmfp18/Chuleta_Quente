@@ -12,22 +12,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $senha = $_POST['senha'];
         $nivel = $_POST['nivel_usuario'];
 
-        // Tenta atualizar o usuário no banco de dados
-        $sql = $conn->query("UPDATE usuarios SET login = '$login', senha = md5('$senha'), nivel = '$nivel' WHERE id = $id");
+        try {
+            // Tenta atualizar o usuário no banco de dados
+            $sql = $conn->query("UPDATE usuarios SET login = '$login', senha = md5('$senha'), nivel = '$nivel' WHERE id = $id");
 
-        // Verifica se a atualização foi bem-sucedida
-        if ($sql) {
-            // Mensagem de sucesso
-            echo "<script>
+            // Verifica se a atualização foi bem-sucedida
+            if ($sql) {
+                // Mensagem de sucesso
+                echo "<script>
             alert('Usuário atualizado com sucesso!');
             window.location.href='usuarios_lista.php';
           </script>";
-        } else {
-            // Mensagem de erro
-            echo "<script>
+            } else {
+                // Mensagem de erro
+                echo "<script>
             alert('Erro ao tentar atualizar o usuário.');
             window.location.href='usuarios_atualiza.php';
           </script>";
+            }
+        } catch (mysqli_sql_exception $e) {
+            // Captura erro de entrada duplicada (código 1062) e exibe uma mensagem de erro.
+            if ($e->getCode() == 1062) {
+                echo "<script>
+            alert('Este Usuário já está cadastrado!');
+            window.location.href='usuarios_lista.php';
+          </script>";
+            } else {
+                echo "<script>
+            alert('Erro ao tentar atualizar o usuário. Tente novamente!');
+            window.location.href='usuarios_lista.php';
+          </script>";
+            }
         }
     }
 }
@@ -61,8 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-info">
-                        <form action="usuarios_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
-                            <label for="login_usuario">Login:</label>
+                        <!-- Garante que antes de gerar a URL o site faça uma verificão da variável global com o valor do id para atualizar sem aparecer uma mensagem de -->
+                    <form action="usuarios_atualiza.php<?php echo isset($_GET['id']) ? '?id=' . $_GET['id'] : ''; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
