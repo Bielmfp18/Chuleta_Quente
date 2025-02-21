@@ -33,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
-<!-- html:5 -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -47,6 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- Link para CSS específico -->
     <link rel="stylesheet" href="../css/meu_estilo.css" type="text/css">
+    
+    <!-- Link para o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2 class="breadcrumb text-info">
                     <a href="usuarios_lista.php">
                         <button class="btn btn-info" type="button">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
                     Inserindo Usuários
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="login_usuario">Login:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
                                 <input type="text" name="login" id="login" autofocus maxlength="30" placeholder="Digite o seu login." class="form-control" required autocomplete="off">
                             </div><!-- fecha input-group -->
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="senha">Senha:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
+                                    <span class="fas fa-qrcode" aria-hidden="true"></span>
                                 </span>
                                 <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada." class="form-control" required autocomplete="off">
                             </div><!-- fecha input-group -->
@@ -110,8 +111,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </main>
 
     <!-- Link arquivos Bootstrap js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1
