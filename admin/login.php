@@ -36,7 +36,7 @@ if($rowLogin['nivel'] == 'sup'){
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="30;URL=../index.php">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/2495680ceb.js" crossorigin="anonymous"></script>
     <!-- Link para CSS específico -->
     <link rel="stylesheet" href="../css/estilo.css" type="text/css">
@@ -68,7 +68,7 @@ if($rowLogin['nivel'] == 'sup'){
                                     <label for="senha">Senha:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
                                         </span>
                                         <input type="password" name="senha" id="senha" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
                                     </p>

@@ -15,19 +15,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($loginresult) {
             // Mensagem de sucesso ao inserir um novo usuário.
-            echo "<script>alert('Usuário inserido com sucesso');</script>";
+            echo "<script>
+            alert('Usuário inserido com sucesso!');
+            window.location.href='usuarios_lista.php';
+          </script>";
         } else {
             // Mensagem de erro apenas se houver falha na inserção do usuário.
-            echo "<script>alert('Erro ao tentar inserir o usuário.');</script>";
+            echo "<script>
+            alert('Erro ao tentar inserir o usuário.');
+            window.location.href='usuarios_insere.php';
+          </script>";
         }
         //Essa parte do código utiliza um método/função chamada getCode() da classe Exception (subclasse: mysqli_sql_exception)
         // que captura um erro e o mostra ao usuário em seu código de verificação (exemplo: Para entradas duplicadas no Banco de Dados -> Código 1062).
     } catch (mysqli_sql_exception $e) {
         // Captura erro de entrada duplicada (código 1062) e exibe uma mensagem de erro.
         if ($e->getCode() == 1062) {
-            echo "<script>alert('Este email já está cadastrado! Tente novamente.');</script>";
+            echo "<script>
+            alert('Este email já está cadastrado!');
+            window.location.href='usuarios_insere.php';
+          </script>";
         } else {
-            echo "<script>alert('Erro ao tentar inserir o usuário. Tente novamente.');</script>";
+           echo "<script>
+            alert('Erro ao tentar inserir o usuário. Tente novamente!');
+            window.location.href='usuarios_insere.php';
+          </script>";
         }
     }
 }
@@ -81,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="senha">Senha:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="fas fa-qrcode" aria-hidden="true"></span>
+                                    <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
                                 <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada." class="form-control" required autocomplete="off">
                             </div><!-- fecha input-group -->
