@@ -58,14 +58,14 @@ $numrow = $lista->num_rows;
                                 } else if($row['nivel'] == 'sup'){
                                     echo "<span class='	glyphicon glyphicon-king text-info' aria-hidden = 'true'></span>";
                                 }
-                                echo " - " .$row['nivel'];
+                                echo " ".$row['nivel']; // echo " - " .$row['nivel']; -> Para mostrar um traço antes do nível no site.
                                 ?>
                             </td>
-                            <td><a href="usuarios_atualiza.php?id=<?php echo $row['id'];?>" class="btn btn-warning btn-sm"> <!-- btn-block -->
+                            <td><a href="usuarios_atualiza.php?id=<?php echo $row['id'];?>" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
                                     <span class="hidden-xs">ALTERAR <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>
-                                <button data-nome="<?php echo $row['login'];?>" data-id="<?php echo $row['id'];?>" class="delete btn btn-danger  btn-sm"> <!-- btn-block -->
+                                <button data-nome="<?php echo $row['login'];?>" data-id="<?php echo $row['id'];?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
                                     <span class="hidden-xs">EXCLUIR <br></span>
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
