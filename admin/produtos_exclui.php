@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
           </script>";
     } else {
         echo "<script>
-            alert('Erro ao deletar o Produto!');
+            alert('Erro ao deletar o produto!');
             window.location.href='produtos_lista.php';
           </script>";
     }

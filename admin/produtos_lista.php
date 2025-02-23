@@ -49,8 +49,7 @@ $numrow = $lista->num_rows;
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($numrow > 0) {
-                        do { ?>
+                    <?php do { ?>
                             <tr>
                                 <td class="hidden"> <?php echo $row['id']; ?></td>
                                 <td><?php echo isset($row['descricao']) ? $row['descricao'] : "Sem descrição"; ?></td>
