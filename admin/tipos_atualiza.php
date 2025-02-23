@@ -61,13 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-info">
-                        <form action="tipos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
+                        <form action="tipos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_tipo" id="form_atualiza_tipoo">
                             <label for="atualizar_rotulo">Rótulo</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="rotulo" id="rotulo" maxlength="30" placeholder="Digite o seu rotulo." class="form-control" required autocomplete="off">
+                                <input type="text" name="rotulo" id="rotulo" maxlength="30" placeholder="Digite o rótulo" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="sigla" id="sigla" maxlength="8" placeholder="Digite a sigla." class="form-control" required autocomplete="off">
+                                <input type="text" name="sigla" id="sigla" maxlength="8" placeholder="Digite a sigla" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 

@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="login" id="login" maxlength="30" placeholder="Digite o seu login." class="form-control" required autocomplete="off">
+                                <input type="text" name="login" id="login" maxlength="30" placeholder="Digite o seu login" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
-                                <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada." class="form-control" required autocomplete="off">
+                                <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
