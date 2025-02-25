@@ -2,6 +2,13 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
+// Busca as informações dos usuários no Banco de Dados.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql_usuarios = $conn->query("SELECT * FROM usuarios WHERE id = $id");
+    $usuarios = $sql_usuarios->fetch_assoc();
+}
+
 // Verifica se o formulário foi enviado via POST.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -20,28 +27,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($sql) {
                 // Mensagem de sucesso
                 echo "<script>
-            alert('Usuário atualizado com sucesso!');
-            window.location.href='usuarios_lista.php';
-          </script>";
+                    alert('Usuário atualizado com sucesso!');
+                    window.location.href='usuarios_lista.php';
+                  </script>";
             } else {
                 // Mensagem de erro
                 echo "<script>
-            alert('Erro ao tentar atualizar o usuário.');
-            window.location.href='usuarios_atualiza.php';
-          </script>";
+                    alert('Erro ao tentar atualizar o usuário.');
+                    window.location.href='usuarios_atualiza.php';
+                  </script>";
             }
         } catch (mysqli_sql_exception $e) {
             // Captura erro de entrada duplicada (código 1062) e exibe uma mensagem de erro.
             if ($e->getCode() == 1062) {
                 echo "<script>
-            alert('Este Usuário já está cadastrado!');
-            window.location.href='usuarios_lista.php';
-          </script>";
+                    alert('Este Usuário já está cadastrado!');
+                    window.location.href='usuarios_lista.php';
+                  </script>";
             } else {
                 echo "<script>
-            alert('Erro ao tentar atualizar o usuário. Tente novamente!');
-            window.location.href='usuarios_lista.php';
-          </script>";
+                    alert('Erro ao tentar atualizar o usuário. Tente novamente!');
+                    window.location.href='usuarios_lista.php';
+                  </script>";
             }
         }
     }
@@ -76,13 +83,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-info">
-                        <!-- Garante que antes de gerar a URL o site faça uma verificão da variável global com o valor do id para atualizar sem aparecer uma mensagem de -->
-                    <form action="usuarios_atualiza.php<?php echo isset($_GET['id']) ? '?id=' . $_GET['id'] : ''; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
+                        <!-- Formulário para atualização de usuário -->
+                        <form action="usuarios_atualiza.php<?php echo isset($_GET['id']) ? '?id=' . $_GET['id'] : ''; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="login" id="login" maxlength="30" placeholder="Digite o seu login" class="form-control" required autocomplete="off">
+                                <input type="text" name="login" value="<?php echo $usuarios['login']; ?>" id="login" maxlength="80" placeholder="Digite o seu login" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
@@ -91,18 +98,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
-                                <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada" class="form-control" required autocomplete="off">
+                                <input type="password" name="senha" value="" id="senha" maxlength="80" placeholder="Digite a senha desejada" class="form-control" required autocomplete="off" autocomplete="new-password">
                             </div>
                             <br>
 
                             <label for="nivel">Nível do usuário</label>
                             <div class="input-group">
-                                <label for="nivel_c" class="radio-inline">
-                                    <input type="radio" name="nivel_usuario" id="nivel" value="com" checked>Comum
-                                </label>
-                                <label for="nivel_s" class="radio-inline">
-                                    <input type="radio" name="nivel_usuario" id="nivel" value="sup">Supervisor
-                                </label>
+                                <span class="input-group-addon">
+                                    <span class="fas fa-user-cog" aria-hidden="true"></span> <!-- Ícone fixo de user cog -->
+                                </span>
+                                <select name="nivel_usuario" id="nivel_usuario" class="form-control" required>
+                                    <option value="com" <?php echo $usuarios['nivel'] == 'com' ? 'selected' : ''; ?>>Comum</option>
+                                    <option value="sup" <?php echo $usuarios['nivel'] == 'sup' ? 'selected' : ''; ?>>Supervisor</option>
+                                </select>
                             </div>
                             <br>
 

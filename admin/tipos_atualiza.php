@@ -2,6 +2,14 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
+//Pega os dados do tipo no Banco de Dados.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql_tipos = $conn->query("SELECT * FROM tipos WHERE id = $id");
+    $tipos = $sql_tipos->fetch_assoc();
+}
+
+
 // Verifica se o formulário foi enviado via POST.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -67,16 +75,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="rotulo" id="rotulo" maxlength="30" placeholder="Digite o rótulo" class="form-control" required autocomplete="off">
+                                <input type="text" name="rotulo" value="<?php echo $tipos['rotulo']; ?>" id="rotulo" maxlength="30" placeholder="Digite o rótulo" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
                             <label for="sigla">Sigla</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="sigla" id="sigla" maxlength="8" placeholder="Digite a sigla" class="form-control" required autocomplete="off">
+                                <select name="sigla" id="sigla" class="form-control" required>
+                            
+                                    <option value="chu" <?php echo $tipos['sigla'] == 'chu' ? 'selected' : '' ?>>chu</option>
+                                    <option value="sob" <?php echo $tipos['sigla'] == 'sob' ? 'selected' : '' ?>>sob</option>
+                                    <option value="beb" <?php echo $tipos['sigla'] == 'beb' ? 'selected' : '' ?>>beb</option>
+                               
+                                </select>
                             </div>
                             <br>
 
