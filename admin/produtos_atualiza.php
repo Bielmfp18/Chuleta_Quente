@@ -2,6 +2,9 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
+
+
+
 //Seleciona os dados do produto atual ao iniciar a página.
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -138,17 +141,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <div style="display: flex; gap: 10px;">
-                                    <label>
-                                        <input type="radio" name="destaque" value="sim" required> Sim
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="destaque" value="não" required> Não
-                                    </label>
-                                </div>
+                            <label for="destaque_s" class="radio-inline">
+                                <input type="radio" name="destaque" id="destaque" value="Sim" 
+                                <?php echo $produto['destaque'] == "Sim"?"checked":null;?>
+                                 >Sim
+                            </label>
+                            <label for="destaque_n" class="radio-inline">
+                                <input type="radio" name="destaque" id="destaque" value="Não" 
+                                <?php echo $produto['destaque'] == "Não"?"checked":null;?>
+                                 >Não
+                            </label>
                             </div>
                             <br>
 
