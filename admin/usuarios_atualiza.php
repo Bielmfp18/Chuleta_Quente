@@ -85,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="alert alert-info">
                         <!-- Formulário para atualização de usuário -->
                         <form action="usuarios_atualiza.php<?php echo isset($_GET['id']) ? '?id=' . $_GET['id'] : ''; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
+                            <label for="login">Login:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
