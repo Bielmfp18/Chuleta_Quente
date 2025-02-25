@@ -98,9 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="resumo">Resumo</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="resumo" id="resumo" maxlength="80" placeholder="Digite o resumo" class="form-control" required autocomplete="off">
+                                <input type="text" name="resumo" id="resumo" maxlength="300" placeholder="Digite o resumo" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <span class="	glyphicon glyphicon-star" aria-hidden="true"></span>
                                 </span>
                                 <div style="display: flex; gap: 10px;">
                                     <label>

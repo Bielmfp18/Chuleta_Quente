@@ -110,7 +110,7 @@ $numrow = $lista->num_rows;
     <script src="../js/bootstrap.min.js"></script>
 
     <!-- Script para o Modal -->
-    <script type="text/javascript">
+    <script type="text/javascript"> 
         $('.delete').on('click', function() {
             var nome = $(this).data('nome');
             // buscar o valor do atributo data-nome

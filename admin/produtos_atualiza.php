@@ -2,22 +2,29 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
+//Seleciona os dados do produto atual ao iniciar a página.
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql_produto = $conn->query("SELECT * FROM produtos WHERE id = $id");
+    $produto = $sql_produto->fetch_assoc();
+}
+
 // Verifica se o formulário foi enviado via POST.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verifica se o ID foi passado na URL
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
+        $tipo_id = $_POST['tipo_id'];
         $descricao = $_POST['descricao'];
         $resumo = $_POST['resumo'];
         $valor = $_POST['valor'];
         $imagem = $_POST['imagem'];
-        $tipo_id = $_GET['tipo_id'];
-        $destaque = $_POST['destaque'];
+        $destaque = $_POST['destaque'] === 'sim' ? 'sim' : 'nao';
 
 
         // Tenta atualizar o usuário no banco de dados
-        $sql = $conn->query("UPDATE produtos SET  descricao = '$descricao', resumo = '$resumo', valor = '$valor', imagem = '$imagem', tipo_id = '$tipo_id', destaque = '$destaque' WHERE id = $id");
+        $sql = $conn->query("UPDATE produtos SET  tipo_id = '$tipo_id', descricao = '$descricao', resumo = '$resumo', valor = '$valor', imagem = '$imagem', destaque = '$destaque' WHERE id = $id");
 
         // Verifica se a atualização foi bem-sucedida
         if ($sql) {
@@ -32,14 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             alert('Erro ao tentar atualizar o produto.');
             window.location.href='produtos_atualiza.php';
           </script>";
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $destaque = $_POST['destaque'] ?? 'nao';
-
-            if ($destaque === 'sim') {
-            } else {
-            }
         }
     }
 }
@@ -74,49 +73,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="thumbnail">
                     <div class="alert alert-info">
                         <form action="produtos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_produto" id="form_atualiza_produto">
-                            <label for="atualizar_produto">Produto</label>
+                            <!-- Campo do tipo de produto -->
+                            <label for="tipo_id">Tipo de Produto</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                                </span>
+                                <select name="tipo_id" id="tipo_id" class="form-control" required>
+                                    <!-- Essa sintaxe é um operador ternário (? :), que é uma forma simplificada de escrever um if-else em PHP. -->
+                                    <!-- Essa linha verifica se o tipo_id do produto é 1 (Churrasco). Se for verdadeiro (true), adiciona o atributo selected para marcar a opção no <select>.
+                                     Caso contrário, não adiciona nada (''). -->
+                                    <option value="1" <?php echo $produto['tipo_id'] == 1 ? 'selected' : '' ?>>Churrasco</option>
+                                    <option value="2" <?php echo $produto['tipo_id'] == 2 ? 'selected' : '' ?>>Sobremesa</option>
+                                    <option value="3" <?php echo $produto['tipo_id'] == 3 ? 'selected' : '' ?>>Bebida</option>
+                                </select>
+                            </div>
+                            <br>
+
+                            <!-- Campo  do nome do produto -->
+                            <label for="descricao">Produto</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="rotulo" id="rotulo" maxlength="30" placeholder="Digite o nome" class="form-control" required autocomplete="off">
+                                <input type="text" name="descricao" value="<?php echo $produto['descricao']; ?>" id="descricao" maxlength="30" placeholder="Digite o nome do produto" class="form-control" required autocomplete="off">
                             </div>
                             <br>
 
+                            <!-- Campo do resumo -->
                             <label for="resumo">Resumo</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="resumo" id="resumo" maxlength="80" placeholder="Digite o resumo" class="form-control" required autocomplete="off">
+                                <input type="text" name="resumo" value="<?php echo $produto['resumo']; ?>" id="resumo" maxlength="80" placeholder="Digite o resumo" class="form-control" required autocomplete="off">
                             </div>
                             <br>
+
+                            <!-- Campo do valor -->
                             <label for="valor">Valor</label>
                             <div class="input-group">
-                                <span class="input-group-addon" >
+                                <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
                                 </span>
-                                <input type="number" name="valor" id="valor" maxlength="8" placeholder="0.00" class="form-control" required autocomplete="off" step="0.01" min="0">
+                                <input type="number" name="valor" value="<?php echo $produto['valor']; ?>" id="valor" maxlength="8" placeholder="0.00" class="form-control" required autocomplete="off" step="0.01" min="0">
                             </div>
                             <br>
 
 
-                            <form action="imagens_produto.php" method="post" enctype="multipart/form-data">
-                                <label for="imagem">Imagem</label>
-                                <div class="input-group" style=" align-items: center; justify-content: flex-start; gap: 40px;">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                                    </span>
-                                    <label for="imagem" style="background-color: #5bc0de; color: white; border: none; padding: 10px 15px;  cursor: pointer; ">Escolher Imagem</label>
-                                    <input type="file" name="imagem" id="imagem" maxlength="80" class="form-control" required autocomplete="off" style="display: none;"> <!--O "display: none" retira o botão enviar arquivo sem o CSS-->
-                                </div>
-                            </form>
 
-                        </form>
-                        <br>
-                        <form action="adicionar_produto.php" method="post">
+                            <!-- Campo da imagem -->
+                            <label for="imagem">Imagem</label>
+                            <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 40px;">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                                </span>
+                                <label for="imagem" style="background-color: #5bc0de; color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
+                                <input type="file" name="imagem" id="imagem" class="form-control" required style="display: none;">
+                            </div>
+                            <br>
+
+
+
+                            <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
-                            <div class="input-group" style=" align-items: center; justify-content: flex-start; gap: 20px;">
+                            <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 </span>
@@ -125,15 +146,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <input type="radio" name="destaque" value="sim" required> Sim
                                     </label>
                                     <label>
-                                        <input type="radio" name="destaque" value="nao" required> Não
+                                        <input type="radio" name="destaque" value="não" required> Não
                                     </label>
                                 </div>
                             </div>
                             <br>
-                        </form>
 
 
-                        <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+
+
+                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
                         </form>
                     </div>
                 </div>
