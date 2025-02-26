@@ -67,16 +67,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
-                <h2 class="breadcrumb text-info">
+            <h2 class="breadcrumb alert-warning">
                     <a href="tipos_lista.php">
-                        <button class="btn btn-info" type="button">
+                    <button class="btn btn-warning" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
                     Inserindo Tipos
                 </h2>
-                <div class="thumbnail">
-                    <div class="alert alert-info">
+                <div class="thumbnail" style = "padding : 7px; ">
+                    <div class="alert alert-warning">
                         <form action="tipos_insere.php" name="form_insere_tipo" id="form_insere_tipo" method="POST" enctype="multipart/form-data">
                             <!-- input rotulo -->
                              
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                             <!-- btn enviar -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" style = "background-color: #f0ad4e;">
                         </form>
                     </div><!-- fecha alert -->
                 </div><!-- fecha thumbnail -->

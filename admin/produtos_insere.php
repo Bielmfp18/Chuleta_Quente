@@ -58,16 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <h2 class="breadcrumb text-info">
+            <h2  class="thumbnail alert-danger" style = "padding: 10px;">
                     <a href="produtos_lista.php">
-                        <button class="btn btn-info" type="button">
+                    <button class="btn btn-alert-danger" type="button"  style="background-color: #d9534f; color: white;">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
                    Inserindo Produto
                 </h2>
-                <div class="thumbnail">
-                    <div class="alert alert-info">
+                <div class="thumbnail" style="padding: 7px;">
+                <div class="alert alert-danger" role="alert">
                         <form action="produtos_insere.php" method="POST" enctype="multipart/form-data">
                             
                                 <!-- Campo para o tipo de produto -->
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                 </span>
-                                <label for="imagem" style="background-color: #5bc0de; color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
+                                <label for="imagem" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
                                 <input type="file" name="imagem" id="imagem" class="form-control" required style="display: none;">
                             </div>
                             <br>
@@ -128,22 +128,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <!-- Campo para o destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
-                                <span class="input-group-addon">
+                                <!-- <span class="input-group-addon">
                                     <span class="	glyphicon glyphicon-star" aria-hidden="true"></span>
-                                </span>
+                                </span> -->
                                 <div style="display: flex; gap: 10px;">
                                     <label>
-                                        <input type="radio" name="destaque" value="sim" required> Sim
+                                        <input type="radio" name="destaque" value="sim" required style = "accent-color:#d9534f;"> Sim
                                     </label>
                                     <label>
-                                        <input type="radio" name="destaque" value="nao" required> Não
+                                        <input type="radio" name="destaque" value="nao" required style = "accent-color:#d9534f;"> Não
                                     </label>
                                 </div>
                             </div>
                             <br>
 
                             <!-- Botão de submissão -->
-                            <input type="submit" value="Inserir Produto" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-danger" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">
                         </form>
                     </div>
                 </div>

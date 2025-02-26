@@ -64,17 +64,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include "menu_adm.php"; ?>
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <h2 class="breadcrumb text-info">
+         <div class="col-xs-12 col-sm-offset-2 col-sm-6  col-md-8">
+                <h2  class="thumbnail alert-danger">
                     <a href="produtos_lista.php">
-                        <button class="btn btn-info" type="button">
-                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
+                        <button class="btn btn-alert-danger" type="button"  style="background-color: #d9534f; color: white;">
+                            <span class="fas fa-chevron-left" aria-hidden="true" ></span>
                         </button>
                     </a>
                     Atualizando Produto
                 </h2>
-                <div class="thumbnail">
-                    <div class="alert alert-info">
+                <div class="thumbnail" style="padding: 20px;">
+
+                <div class="alert alert-danger" role="alert">
                         <form action="produtos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_produto" id="form_atualiza_produto">
                             <!-- Campo do tipo de produto -->
                             <label for="tipo_id">Tipo de Produto</label>
@@ -125,10 +126,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <label for="imagem_atual">Imagem Atual:</label>
                             <div class="input-group">
-                               <span class="input-group-addon" style="padding: 10px;">
-                                    <img src="../images/<?php echo $produto['imagem'] ?>" alt="Imagem Atual do Produto" srcset="" style = "width: 300px; height: 200px; padding: 20px; ">
+                               <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                               </span>
+                                    <img src="../images/<?php echo $produto['imagem'] ?>" alt="Imagem Atual do Produto" srcset="" style = "width: 300px; height: 200px; padding: 1px; ">
                                     <input type="hidden" name="imagem_atual" id="imagem_atual" value="<?php echo $row['imagem'] ?>">
-                                    </span>
+                                    
+                                    
                                 </div>
                             <br>
 
@@ -138,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                 </span>
-                                <label for="imagem" style="background-color: #5bc0de; color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
+                                <label for="imagem" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
                                 <input type="file" name="imagem" id="imagem" class="form-control" required style="display: none;">
                             </div>
                             <br>
@@ -148,17 +152,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
-                                <span class="input-group-addon">
+                                <!-- <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
+                                </span> -->
                                 <div style="display: flex; gap: 10px;">
                                     <label>
                                         <input type="radio" name="destaque" id="destaque" value="Sim"
-                                            <?php echo $produto['destaque'] == "Sim" ? "checked" : null; ?>>Sim
+                                            <?php echo $produto['destaque'] == "Sim" ? "checked" : null; ?> style = "accent-color:#d9534f;">Sim
                                     </label>
                                     <label for="destaque_n" class="radio-inline">
                                         <input type="radio" name="destaque" id="destaque" value="Não"
-                                            <?php echo $produto['destaque'] == "Não" ? "checked" : null; ?>>Não
+                                            <?php echo $produto['destaque'] == "Não" ? "checked" : null; ?> style = "accent-color:#d9534f;">Não
                                     </label>
                                 </div>
                             </div>
@@ -167,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-danger" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">
                         </form>
                     </div>
                 </div>

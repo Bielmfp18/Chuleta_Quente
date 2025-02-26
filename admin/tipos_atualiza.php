@@ -59,16 +59,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <h2 class="breadcrumb text-info">
+                <h2 class="breadcrumb alert-warning">
                     <a href="tipos_lista.php">
-                        <button class="btn btn-info" type="button">
+                        <button class="btn btn-warning" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
                     Atualizando Tipo
                 </h2>
-                <div class="thumbnail">
-                    <div class="alert alert-info">
+                <div class="thumbnail" style = "padding : 7px; ">
+                    <div class="alert alert-warning">
                         <form action="tipos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_tipo" id="form_atualiza_tipoo">
                             <label for="atualizar_rotulo">Rótulo</label>
                             <div class="input-group">
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br>
 
 
-                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" style = "background-color: #f0ad4e;">
                         </form>
                     </div>
                 </div>

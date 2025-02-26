@@ -27,7 +27,7 @@ $numrow = $lista->num_rows;
 
     <main class="container">
 
-        <h1 class="breadcrumb alert-warning">Lista de Produtos</h1>
+        <h1 class="breadcrumb alert-danger">Lista de Produtos</h1>
 
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->
             <table class="table table-hover table-condensed tbopacidade text-center">
