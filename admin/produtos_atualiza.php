@@ -123,7 +123,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <br>
 
-
+                            <label for="imagem_atual">Imagem Atual:</label>
+                            <div class="input-group">
+                               <span class="input-group-addon" style="padding: 10px;">
+                                    <img src="../images/<?php echo $produto['imagem'] ?>" alt="Imagem Atual do Produto" srcset="" style = "width: 300px; height: 200px; padding: 20px; ">
+                                    <input type="hidden" name="imagem_atual" id="imagem_atual" value="<?php echo $row['imagem'] ?>">
+                                    </span>
+                                </div>
+                            <br>
 
                             <!-- Campo da imagem -->
                             <label for="imagem">Imagem</label>
@@ -138,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-                           <!-- Campo do destaque -->
+                            <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
                                 <span class="input-group-addon">
@@ -146,17 +153,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </span>
                                 <div style="display: flex; gap: 10px;">
                                     <label>
-                              <input type="radio" name="destaque" id="destaque" value="Sim" 
-                                <?php echo $produto['destaque'] == "Sim"?"checked":null;?>
-                                 >Sim
-                            </label>
-                            <label for="destaque_n" class="radio-inline">
-                                <input type="radio" name="destaque" id="destaque" value="Não" 
-                                <?php echo $produto['destaque'] == "Não"?"checked":null;?>
-                                 >Não
-                            </label>
+                                        <input type="radio" name="destaque" id="destaque" value="Sim"
+                                            <?php echo $produto['destaque'] == "Sim" ? "checked" : null; ?>>Sim
+                                    </label>
+                                    <label for="destaque_n" class="radio-inline">
+                                        <input type="radio" name="destaque" id="destaque" value="Não"
+                                            <?php echo $produto['destaque'] == "Não" ? "checked" : null; ?>>Não
+                                    </label>
+                                </div>
                             </div>
-</div>
                             <br>
 
 
