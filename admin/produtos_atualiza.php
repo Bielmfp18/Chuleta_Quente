@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resumo = $_POST['resumo'];
         $valor = $_POST['valor'];
         $imagem = $_POST['imagem'];
-        $destaque = $_POST['destaque'] === 'sim' ? 'sim' : 'nao';
+        $destaque = $_POST['destaque'] === 'Sim' ? 'Sim' : 'Não';
 
 
         // Tenta atualizar o usuário no banco de dados
@@ -138,11 +138,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-                            <!-- Campo do destaque -->
+                           <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
-                            <label for="destaque_s" class="radio-inline">
-                                <input type="radio" name="destaque" id="destaque" value="Sim" 
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                </span>
+                                <div style="display: flex; gap: 10px;">
+                                    <label>
+                              <input type="radio" name="destaque" id="destaque" value="Sim" 
                                 <?php echo $produto['destaque'] == "Sim"?"checked":null;?>
                                  >Sim
                             </label>
@@ -152,6 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                  >Não
                             </label>
                             </div>
+</div>
                             <br>
 
 
