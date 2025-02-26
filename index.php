@@ -30,8 +30,7 @@
         <a class="pt-6" name="produtos">&nbsp;</a>
         <!-- "include" pega todas as informações do arquivo e o adiciona ao local declarado no código html -->
         <?php include 'produtos_geral.php'; ?>
-        <!-- Reserva -->
-        <?php include 'reserva.php';?>
+   
         <!--  Rodapé -->
         <footer class="panel-footer"></footer>
         <?php include 'rodape.php'; ?>
