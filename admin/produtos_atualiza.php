@@ -2,7 +2,19 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-
+//Toda esse conjunto de código serve para evitar conflito de nomes entre arquivos e serve para alterar a imagem atual pela imagem nova.
+//Se o usuário clicou no botão atualizar.
+if($_FILES['imagemfile']['name']){//Se o usuário escolher uma imagem.
+    unlink("../images/".$_POST['imagem_atual']); //Apaga a imagem atual.
+    $nome_img = $_FILES['imagemfile']['name'];
+    $tmp_img = $_FILES['imagemfile']['tmp_name'];
+    $rand = rand(100001, 999999);
+    $dir_img = "../images/".$rand.$nome_img;
+    move_uploaded_file($tmp_img, $dir_img); //TRansfere a imagem do php para o servidor de arquivos.
+    $nome_img = $rand.$nome_img;
+}else{
+    $nome_img = $_POST['imagem_atual'];
+}
 
 
 //Seleciona os dados do produto atual ao iniciar a página.
@@ -44,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </script>";
         }
     }
+    
 }
 ?>
 
@@ -155,16 +168,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <!-- <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 </span> -->
-                                <div style="display: flex; gap: 10px;">
-                                    <label>
+                              
+                                    <label for="destaque" class="radio-inline">
                                         <input type="radio" name="destaque" id="destaque" value="Sim"
                                             <?php echo $produto['destaque'] == "Sim" ? "checked" : null; ?> style = "accent-color:#d9534f;">Sim
                                     </label>
-                                    <label for="destaque_n" class="radio-inline">
+                                    <label for="destaque" class="radio-inline">
                                         <input type="radio" name="destaque" id="destaque" value="Não"
                                             <?php echo $produto['destaque'] == "Não" ? "checked" : null; ?> style = "accent-color:#d9534f;">Não
                                     </label>
-                                </div>
+                           
                             </div>
                             <br>
 
