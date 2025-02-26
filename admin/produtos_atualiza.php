@@ -1,68 +1,51 @@
-<?php 
+<?php
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-// Verifica se o ID foi passado na URL e carrega os dados do produto
+
+
+
+//Seleciona os dados do produto atual ao iniciar a página.
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql_produto = $conn->query("SELECT * FROM produtos WHERE id = $id");
     $produto = $sql_produto->fetch_assoc();
 }
 
-// Verifica se o formulário foi enviado via POST
+// Verifica se o formulário foi enviado via POST.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    $tipo_id = $_POST['tipo_id'];
-    $descricao = $_POST['descricao'];
-    $resumo = $_POST['resumo'];
-    $valor = $_POST['valor'];
-    $destaque = isset($_POST['destaque']) && $_POST['destaque'] === 'Sim' ? 'Sim' : 'Não';
 
-    // Verifica se um novo arquivo de imagem foi enviado
-    if (!empty($_FILES['imagem']['name'])) {
-        // Remove a imagem antiga, se existir
-        if (!empty($produto['imagem']) && file_exists("../images/" . $produto['imagem'])) {
-            unlink("../images/" . $produto['imagem']);
-        }
+    // Verifica se o ID foi passado na URL
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $tipo_id = $_POST['tipo_id'];
+        $descricao = $_POST['descricao'];
+        $resumo = $_POST['resumo'];
+        $valor = $_POST['valor'];
+        $imagem = $_POST['imagem'];
+        $destaque = $_POST['destaque'] === 'Sim' ? 'Sim' : 'Não';
 
-        // Processa a nova imagem
-        $nome_img = $_FILES['imagem']['name'];
-        $tmp_img = $_FILES['imagem']['tmp_name'];
-        $rand = rand(100001, 999999);
-        $nome_img = $rand . "_" . $nome_img;
-        $dir_img = "../images/" . $nome_img;
 
-        // Move o arquivo para a pasta de imagens
-        move_uploaded_file($tmp_img, $dir_img);
-    } else {
-        // Mantém a imagem antiga se nenhuma nova for enviada
-        $nome_img = $produto['imagem'];
-    }
+        // Tenta atualizar o usuário no banco de dados
+        $sql = $conn->query("UPDATE produtos SET  tipo_id = '$tipo_id', descricao = '$descricao', resumo = '$resumo', valor = '$valor', imagem = '$imagem', destaque = '$destaque' WHERE id = $id");
 
-    // Atualiza os dados no banco de dados
-    $sql = "UPDATE produtos SET 
-                tipo_id = '$tipo_id', 
-                descricao = '$descricao', 
-                resumo = '$resumo', 
-                valor = '$valor', 
-                imagem = '$nome_img', 
-                destaque = '$destaque' 
-            WHERE id = $id";
-
-    if ($conn->query($sql)) {
-        echo "<script>
+        // Verifica se a atualização foi bem-sucedida
+        if ($sql) {
+            // Mensagem de sucesso
+            echo "<script>
             alert('Produto atualizado com sucesso!');
             window.location.href='produtos_lista.php';
-        </script>";
-    } else {
-        echo "<script>
+          </script>";
+        } else {
+            // Mensagem de erro
+            echo "<script>
             alert('Erro ao tentar atualizar o produto.');
-            window.location.href='produtos_atualiza.php?id=$id';
-        </script>";
+            window.location.href='produtos_atualiza.php';
+          </script>";
+        }
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
