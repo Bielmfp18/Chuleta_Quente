@@ -13,8 +13,16 @@
 }
 
     </style>
-</head>
-<body>
-    <div class="container2">
-</body>
-</html>
+    </head>
+    <body>
+        <div class="container2">
+        <a href="" class = "btn-reserva">Fazer Reserva</a>
+        </div>
+        
+        <div class="">
+          
+        </div>
+     
+    </body>
+    </html>
+    
