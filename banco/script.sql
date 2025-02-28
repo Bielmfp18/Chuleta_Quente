@@ -105,3 +105,25 @@ CREATE VIEW vw_produtos AS
 		JOIN tipos t
 	WHERE p.tipo_id=t.id;
 COMMIT;
+
+-- Criando a tabela de cliente
+
+create table cliente (
+id int primary key auto_increment not null,
+nome varchar(100) not null,
+email varchar(100) not null,
+cpf char(14) not null,
+senha varchar(70) not null,
+nivel_cliente enum('com') not null);
+
+-- Criando a tabela de reserva
+create table reserva(
+id int primary key auto_increment not null,
+cliente_id int not null,
+usuario_id int not null,
+data date not null,
+horario time not null,
+motivo varchar(70) not null,
+ativo bit not null,
+foreign key(cliente_id) references cliente(id),
+foreign key (usuario_id) references usuarios(id));

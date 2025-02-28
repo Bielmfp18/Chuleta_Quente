@@ -9,15 +9,15 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
 <!-- BOOTSTRAP -->
 <!-- abre a barra de navegação -->
 <style>
-.li-separador {
-    margin-top: 7px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
+    .li-separador {
+        margin-top: 7px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 
     .reserva1 {
-        background-color: #0056b3 !important; 
-        color: white !important; 
+        background-color: #0056b3 !important;
+        color: white !important;
         border-radius: 10px;
         border: none;
         padding: 7px 10px !important;
@@ -25,8 +25,8 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
         transition: 0.3s ease;
         cursor: pointer;
         display: inline-block;
-     
-      
+
+
     }
 
     .reserva1:hover {
@@ -39,7 +39,6 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
     .reserva1:visited {
         color: white;
     }
-
 </style>
 <nav class="navbar navbar-expanded-md navbar-fixed-top navbar-light navbar-inverse">
     <div class="container-fluid">
@@ -72,25 +71,25 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                         TIPOS
                         <span class="caret"></span>
 
-                
-                    <ul class="dropdown-menu">
-                        <?php foreach ($rows_tipos as $row) { ?>
 
-                            <li><a href="produtos_por_tipo.php?id_tipo=<?php echo $row[0] . '&rotulo=' . $row[2]; ?>">
-                                    <?php echo $row[2]; ?>
-                                </a></li> <!-- li>a + TAB -->
-                            <!-- <li id="jose"></li> li# + TAB -->
-                            <!-- <li class="classe"></li> li. + TAB -->
-                            <!--Vai trazer 8 tags <li> li*8 -->
-                        <?php } ?>
+                        <ul class="dropdown-menu">
+                            <?php foreach ($rows_tipos as $row) { ?>
 
-                    </ul>
+                                <li><a href="produtos_por_tipo.php?id_tipo=<?php echo $row[0] . '&rotulo=' . $row[2]; ?>">
+                                        <?php echo $row[2]; ?>
+                                    </a></li> <!-- li>a + TAB -->
+                                <!-- <li id="jose"></li> li# + TAB -->
+                                <!-- <li class="classe"></li> li. + TAB -->
+                                <!--Vai trazer 8 tags <li> li*8 -->
+                            <?php } ?>
+
+                        </ul>
                 </li>
                 <!-- Fim do dropdown -->
                 <li><a href="index.php#contato">CONTATO</a></li>
                 <!-- Botão Fazer Reserva -->
-                <li class ="li-separador">
-                    <a href="pedidos_reserva.php" class="reserva1">Pedido de Reserva</a>
+                <li class="li-separador">
+                    <a href="admin/login_cliente.php" class="reserva1">Pedido de Reserva</a>
                 </li>
                 <!-- início formulário de busca -->
                 <form action="produtos_busca.php" method="get" name="form-busca"
@@ -106,11 +105,17 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                     </div>
                 </form>
                 <!-- fim formulário de busca -->
-                <li class="active">
-                    <a href="admin/index.php">
-                        <span class="glyphicon glyphicon-user">&nbsp;ADMIN/CLIENTE</span>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;ADMIN/CLIENTE</span>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="admin/index.php">Login Admin</a></li>
+                        <li><a href="cliente/login_cliente.php">Login Cliente</a></li>
+                        <li><a href="cliente/cadastro_cliente.php">Cadastro Cliente</a></li>
+                    </ul>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -118,3 +123,9 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
 
 
 </nav>
+
+<!-- <li class="active">
+                    <a href="admin/index.php">
+                        <span class="glyphicon glyphicon-user">&nbsp;ADMIN/CLIENTE</span>
+                    </a>
+                </li> -->
