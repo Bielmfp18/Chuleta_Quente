@@ -1,4 +1,5 @@
 <?php
+
 include '../conn/connect.php';
 //Inicia a verificação do login.
 if ($_POST) {
@@ -63,7 +64,7 @@ if ($_POST) {
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
                                         </span>
-                                        <input type="text" name="login" id="login" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
+                                        <input type="text" name="login_cliente" id="login_cliente" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
                                     </p>
                                     <label for="senha">Senha:</label>
                                     <p class="input-group">
