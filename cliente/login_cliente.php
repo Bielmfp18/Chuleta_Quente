@@ -91,6 +91,13 @@ if ($_POST) {
                                         Caso não faça uma escolha em 30 segundos será redirecionado automaticamente para página inicial.
                                     </small>
                                 </p>
+                                <br><br>
+                                <p class="text-center">
+                                    <small>
+                                        <br>
+                                       Não está cadastrado?. <a href="cadastro_cliente.php">Clique Aqui</a>
+                                    </small>
+                                </p>
                             </div><!-- fecha alert -->
                         </div><!-- fecha thumbnail -->
                     </div><!-- fecha dimensionamento -->

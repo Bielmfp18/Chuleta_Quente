@@ -2,28 +2,42 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-//if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $login = $_POST['login'];
     $senha = $_POST['senha'];
     $nivel = $_POST['nivel_usuario'];
 
-    try {
         // Tenta inserir o usuário no banco
         $loginresult = $conn->query("INSERT INTO usuarios VALUES (0, '$login', md5('$senha'), '$nivel')");
+    
+}
+
+
+//if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'];
+    $usuario_id = $_POST['usuario_id'];
+    $email = $_POST['email'];
+    $cpf = $_POST['cpf'];
+  
+  
+
+    try {
+        // Tenta inserir o usuário no banco
+        $loginresult = $conn->query("INSERT INTO cliente VALUES (0, '$usuario_id','$nome','$email','$cpf', md5('$senha'))");
 
         if ($loginresult) {
             // Mensagem de sucesso ao inserir um novo usuário.
             echo "<script>
             alert('Usuário inserido com sucesso!');
-            window.location.href='usuarios_lista.php';
+            window.location.href='cliente_lista.php';
           </script>";
         } else {
             // Mensagem de erro apenas se houver falha na inserção do usuário.
             echo "<script>
             alert('Erro ao tentar inserir o usuário.');
-            window.location.href='usuarios_insere.php';
+            window.location.href='cliente_insere.php';
           </script>";
         }
         //Essa parte do código utiliza um método/função chamada getCode() da classe Exception (subclasse: mysqli_sql_exception)
@@ -33,23 +47,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($e->getCode() == 1062) {
             echo "<script>
             alert('Este usuário já está cadastrado!');
-            window.location.href='usuarios_insere.php';
+            window.location.href='cliente_insere.php';
           </script>";
         } else {
            echo "<script>
             alert('Erro ao tentar inserir o usuário. Tente novamente!');
-            window.location.href='usuarios_insere.php';
+            window.location.href='cliente_insere.php';
           </script>";
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>Usuários - Insere</title>
+    <title>Cliente - Insere</title>
     <meta charset="UTF-8">
     <!-- Link arquivos Bootstrap CSS -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,18 +83,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
                 <h2 class="breadcrumb text-info">
-                    <a href="usuarios_lista.php">
+                    <a href="cliente_lista.php">
                         <button class="btn btn-info" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
-                    Inserindo Usuários
+                   Cadastro de Cliente
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-info">
-                        <form action="usuarios_insere.php" name="form_insere_usuario" id="form_insere_usuario" method="POST" enctype="multipart/form-data">
+                        <form action="cliente_insere.php" name="form_insere_usuario" id="form_insere_usuario" method="POST" enctype="multipart/form-data">
                             <!-- input login_usuario -->
-                            <label for="login_usuario">Login:</label>
+                            <label for="login_usuario">Nome:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>

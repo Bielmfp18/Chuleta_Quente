@@ -76,6 +76,8 @@ if($rowLogin['nivel'] == 'sup'){
                                         <input type="submit" value="Entrar" class="btn btn-primary">
                                     </p>
                                 </form>
+
+                                <br>
                                 <p class="text-center">
                                     <small>
                                         <br>
