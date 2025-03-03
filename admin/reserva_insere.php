@@ -4,28 +4,29 @@ include '../conn/connect.php';
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $cliente_id = $_POST['cliente_id']; 
-    // $usuario_id = $_POST['usuario_id'];
+     $cliente_cpf = $_POST['cliente_cpf']; 
+     $cliente_email = $_POST['cliente_email'];
     $data_horario= $_POST['data_horario'];
     $num_pessoas = $_POST['num_pessoas'];
     $motivo = $_POST['motivo'];
+    $status = $_POST['status'];
   
 
     try {
         // Tenta inserir o usuário no banco
-        $reservaresult = $conn->query("INSERT INTO reserva VALUES (0, $cliente_id, $usuario_id, '$data_horario', $num_pessoas, '$motivo')");
+        $reservaresult = $conn->query("INSERT INTO reserva VALUES (0, '$cliente_cpf', '$cliente_email', '$data_horario', $num_pessoas, '$motivo', $status)");
 
         if ($reservaresult) {
             // Mensagem de sucesso ao inserir um novo usuário.
             echo "<script>
-            alert('Novo reserva inserido com sucesso!');
-            window.location.href='tipos_lista.php';
+            alert('Nova reserva inserida com sucesso!');
+            window.location.href='reserva_lista.php';
           </script>";
         } else {
             // Mensagem de erro apenas se houver falha na inserção do usuário.
             echo "<script>
-            alert('Erro ao tentar inserir o novo reserva.');
-            window.location.href='tipos_insere.php';
+            alert('Erro ao tentar inserir a nova reserva.');
+            window.location.href='reserva_insere.php';
           </script>";
         }
         //Essa parte do código utiliza um método/função chamada getCode() da classe Exception (subclasse: mysqli_sql_exception)
@@ -35,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($e->getCode() == 1062) {
             echo "<script>
             alert('Este reserva já está cadastrado!');
-            window.location.href='tipos_insere.php';
+            window.location.href='reserva_insere.php';
           </script>";
         } else {
            echo "<script>
-            alert('Erro ao tentar inserir o novo reserva. Tente novamente!');
-            window.location.href='tipos_insere.php';
+            alert('Erro ao tentar inserir a nova reserva. Tente novamente!');
+            window.location.href='reserva_insere.php';
           </script>";
         }
     }
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form action="tipos_insere.php" name="form_insere_tipo" id="form_insere_tipo" method="POST" enctype="multipart/form-data">
                             <!-- input rotulo -->
                              
-                            <label for="rotulo">Nome:</label>
+                            <label for="rotulo">CPF:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
