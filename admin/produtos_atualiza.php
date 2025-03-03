@@ -1,68 +1,64 @@
-<?php
+<?php 
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-//Toda esse conjunto de código serve para evitar conflito de nomes entre arquivos e serve para alterar a imagem atual pela imagem nova.
-//Se o usuário clicou no botão atualizar.
-if($_FILES['imagemfile']['name']){//Se o usuário escolher uma imagem.
-    unlink("../images/".$_POST['imagem_atual']); //Apaga a imagem atual.
-    $nome_img = $_FILES['imagemfile']['name'];
-    $tmp_img = $_FILES['imagemfile']['tmp_name'];
-    $rand = rand(100001, 999999);
-    $dir_img = "../images/".$rand.$nome_img;
-    move_uploaded_file($tmp_img, $dir_img); //TRansfere a imagem do php para o servidor de arquivos.
-    $nome_img = $rand.$nome_img;
-}else{
-    $nome_img = $_POST['imagem_atual'];
+// Processa o upload da imagem e atualiza o produto somente se o formulário foi enviado via POST.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Se uma nova imagem foi enviada...
+    if (isset($_FILES['imagem']) && !empty($_FILES['imagem']['name'])) {
+        // Remove a imagem atual, se existir e se o arquivo existir no diretório
+        if (!empty($_POST['imagem_atual']) && file_exists("../images/".$_POST['imagem_atual'])) {
+            unlink("../images/".$_POST['imagem_atual']);
+        }
+        $nome_img = $_FILES['imagem']['name'];
+        $tmp_img = $_FILES['imagem']['tmp_name'];
+        $rand = rand(100001, 999999);
+        $novo_nome_img = $rand . $nome_img;
+        $dir_img = "../images/" . $novo_nome_img;
+        move_uploaded_file($tmp_img, $dir_img);
+    } else {
+        // Se nenhuma nova imagem foi enviada, mantém a imagem atual
+        $novo_nome_img = $_POST['imagem_atual'];
+    }
+
+    // Verifica se o ID foi passado na URL
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $tipo_id  = $_POST['tipo_id'];
+        $descricao = $_POST['descricao'];
+        $resumo   = $_POST['resumo'];
+        $valor    = $_POST['valor'];
+        // A variável $imagem não é utilizada; usamos $novo_nome_img para atualizar a coluna.
+        $destaque = $_POST['destaque'] === 'Sim' ? 'Sim' : 'Não';
+
+        // Atualiza o produto no banco de dados
+        $sql = $conn->query("UPDATE produtos SET tipo_id = '$tipo_id', descricao = '$descricao', resumo = '$resumo', valor = '$valor', imagem = '$novo_nome_img', destaque = '$destaque' WHERE id = $id");
+
+        if ($sql) {
+            echo "<script>
+                    alert('Produto atualizado com sucesso!');
+                    window.location.href='produtos_lista.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Erro ao tentar atualizar o produto.');
+                    window.location.href='produtos_atualiza.php?id=$id';
+                  </script>";
+        }
+    }
 }
 
-
-//Seleciona os dados do produto atual ao iniciar a página.
+// Seleciona os dados do produto atual para exibição no formulário.
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sql_produto = $conn->query("SELECT * FROM produtos WHERE id = $id");
     $produto = $sql_produto->fetch_assoc();
 }
-
-// Verifica se o formulário foi enviado via POST.
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Verifica se o ID foi passado na URL
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $tipo_id = $_POST['tipo_id'];
-        $descricao = $_POST['descricao'];
-        $resumo = $_POST['resumo'];
-        $valor = $_POST['valor'];
-        $imagem = $_POST['imagem'];
-        $destaque = $_POST['destaque'] === 'Sim' ? 'Sim' : 'Não';
-
-
-        // Tenta atualizar o usuário no banco de dados
-        $sql = $conn->query("UPDATE produtos SET  tipo_id = '$tipo_id', descricao = '$descricao', resumo = '$resumo', valor = '$valor', imagem = '$imagem', destaque = '$destaque' WHERE id = $id");
-
-        // Verifica se a atualização foi bem-sucedida
-        if ($sql) {
-            // Mensagem de sucesso
-            echo "<script>
-            alert('Produto atualizado com sucesso!');
-            window.location.href='produtos_lista.php';
-          </script>";
-        } else {
-            // Mensagem de erro
-            echo "<script>
-            alert('Erro ao tentar atualizar o produto.');
-            window.location.href='produtos_atualiza.php';
-          </script>";
-        }
-    }
-    
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <title>Produtos - Atualizar</title>
     <meta charset="UTF-8">
@@ -77,19 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include "menu_adm.php"; ?>
     <main class="container">
         <div class="row">
-         <div class="col-xs-12 col-sm-offset-2 col-sm-6  col-md-8">
-                <h2  class="thumbnail alert-danger">
+         <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
+                <h2 class="thumbnail alert-danger">
                     <a href="produtos_lista.php">
-                        <button class="btn btn-alert-danger" type="button"  style="background-color: #d9534f; color: white;">
-                            <span class="fas fa-chevron-left" aria-hidden="true" ></span>
+                        <button class="btn btn-alert-danger" type="button" style="background-color: #d9534f; color: white;">
+                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
                     Atualizando Produto
                 </h2>
                 <div class="thumbnail" style="padding: 20px;">
-
-                <div class="alert alert-danger" role="alert">
-                        <form action="produtos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" name="form_atualiza_produto" id="form_atualiza_produto">
+                    <div class="alert alert-danger" role="alert">
+                        <!-- Note que foi adicionado enctype para upload de arquivos -->
+                        <form action="produtos_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_produto" id="form_atualiza_produto">
+                            
                             <!-- Campo do tipo de produto -->
                             <label for="tipo_id">Tipo de Produto</label>
                             <div class="input-group">
@@ -97,9 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                                 </span>
                                 <select name="tipo_id" id="tipo_id" class="form-control" required>
-                                    <!-- Essa sintaxe é um operador ternário (? :), que é uma forma simplificada de escrever um if-else em PHP. -->
-                                    <!-- Essa linha verifica se o tipo_id do produto é 1 (Churrasco). Se for verdadeiro (true), adiciona o atributo selected para marcar a opção no <select>.
-                                     Caso contrário, não adiciona nada (''). -->
                                     <option value="1" <?php echo $produto['tipo_id'] == 1 ? 'selected' : '' ?>>Churrasco</option>
                                     <option value="2" <?php echo $produto['tipo_id'] == 2 ? 'selected' : '' ?>>Sobremesa</option>
                                     <option value="3" <?php echo $produto['tipo_id'] == 3 ? 'selected' : '' ?>>Bebida</option>
@@ -107,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <br>
 
-                            <!-- Campo  do nome do produto -->
+                            <!-- Campo do nome do produto -->
                             <label for="descricao">Produto</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -137,54 +131,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <br>
 
+                            <!-- Exibição da imagem atual -->
                             <label for="imagem_atual">Imagem Atual:</label>
                             <div class="input-group">
                                <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                                   <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                </span>
-                                    <img src="../images/<?php echo $produto['imagem'] ?>" alt="Imagem Atual do Produto" srcset="" style = "width: 300px; height: 200px; padding: 1px; ">
-                                    <input type="hidden" name="imagem_atual" id="imagem_atual" value="<?php echo $row['imagem'] ?>">
-                                    
-                                    
-                                </div>
+                                <img src="../images/<?php echo $produto['imagem']; ?>" alt="Imagem Atual do Produto" style="width: 300px; height: 200px; padding: 1px;">
+                                <input type="hidden" name="imagem_atual" id="imagem_atual" value="<?php echo $produto['imagem']; ?>">
+                            </div>
                             <br>
 
-                            <!-- Campo da imagem -->
+                            <!-- Campo para selecionar nova imagem -->
                             <label for="imagem">Imagem</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 40px;">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                 </span>
-                                <label for="imagem" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
-                                <input type="file" name="imagem" id="imagem" class="form-control" required style="display: none;">
+                                <label for="imagem" style="background-color: #d9534f; color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
+                                <input type="file" name="imagem" id="imagem" class="form-control" style="display: none;">
                             </div>
                             <br>
-
-
 
                             <!-- Campo do destaque -->
                             <label for="destaque">Destaque</label>
                             <div class="input-group" style="align-items: center; justify-content: flex-start; gap: 20px;">
-                                <!-- <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span> -->
-                              
-                                    <label for="destaque" class="radio-inline">
-                                        <input type="radio" name="destaque" id="destaque" value="Sim"
-                                            <?php echo $produto['destaque'] == "Sim" ? "checked" : null; ?> style = "accent-color:#d9534f;">Sim
-                                    </label>
-                                    <label for="destaque" class="radio-inline">
-                                        <input type="radio" name="destaque" id="destaque" value="Não"
-                                            <?php echo $produto['destaque'] == "Não" ? "checked" : null; ?> style = "accent-color:#d9534f;">Não
-                                    </label>
-                           
+                                <label for="destaque" class="radio-inline">
+                                    <input type="radio" name="destaque" value="Sim" <?php echo $produto['destaque'] == "Sim" ? "checked" : ""; ?> style="accent-color:#d9534f;"> Sim
+                                </label>
+                                <label for="destaque" class="radio-inline">
+                                    <input type="radio" name="destaque" value="Não" <?php echo $produto['destaque'] == "Não" ? "checked" : ""; ?> style="accent-color:#d9534f;"> Não
+                                </label>
                             </div>
                             <br>
 
-
-
-
-                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-danger" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                            <input type="submit" value="Atualizar" name="enviar" id="enviar" class="btn btn-block btn-danger" style="background-color: #d9534f; color: white; border: none; padding: 10px 15px; cursor: pointer;">
                         </form>
                     </div>
                 </div>
@@ -195,5 +176,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 </body>
-
 </html>
