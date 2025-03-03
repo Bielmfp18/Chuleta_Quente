@@ -87,7 +87,7 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                 </li>
                 <!-- Fim do dropdown -->
                 <li><a href="index.php#contato">CONTATO</a></li>
-                <!-- Botão Fazer Reserva -->
+                <!-- Botão Pedido de Reserva -->
                 <li class="li-separador">
                     <a href="pedido_reserva.php" class="reserva1">Pedido de Reserva</a>
                 </li>

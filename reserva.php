@@ -17,22 +17,22 @@
         }
 
         .btn-reserva {
-            background-color: #0056b3;
-            color: white;
-            padding: 10px 20px;
+            background-color: #0056b3 ;
+            color: white !important;
+            padding: 10px 20px ;
             border-radius: 10px;
             border: none;
             font-size: 18px;
-            transition: 0.3s ease;
+            transition: 0.3s ease ;
             cursor: pointer;
-            display: inline-block;
+            display: inline-block ;
         }
 
         .btn-reserva:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) ;
             background-color: #ffcc00 ;
-            color: black;
-            text-decoration: none;
+            color: white;
+    
         }
 
         /* .btn-reserva:visited {
@@ -52,7 +52,7 @@
 
 <body>
     <div class="container2">
-        <a href="pedidos_reserva.php" class="btn-reserva">Fazer Reserva</a>
+        <a href="pedidos_reserva.php" style = "text-decoration: none;" class="btn-reserva">Fazer Reserva</a>
     </div>
 
     <div class="promo-banner">
