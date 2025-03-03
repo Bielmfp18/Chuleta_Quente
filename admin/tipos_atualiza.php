@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br>
 
 
-                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" style = "background-color: #f0ad4e;">
+                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning">
                         </form>
                     </div>
                 </div>

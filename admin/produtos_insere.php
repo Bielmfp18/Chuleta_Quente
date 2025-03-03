@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
             <h2  class="thumbnail alert-danger" style = "padding: 10px;">
                     <a href="produtos_lista.php" style = "text-decoration: none;">
-                    <button class="btn btn-alert-danger" type="button"  style="background-color: #d9534f; color: white;">
+                    <button class="btn btn-danger" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
@@ -120,8 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                 </span>
-                                <label for="imagem" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">Escolher Imagem</label>
-                                <input type="file" name="imagem" id="imagem" class="form-control" required style="display: none;">
+                                <label for="imagem" style=" border: none; padding: 10px 15px; cursor: pointer;" class="btn btn-block btn-danger">Escolher Imagem</label>
+                                <input type="file" name="imagem" id="imagem"  required style="display: none;">
                             </div>
                             <br>
 
@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br>
 
                             <!-- Botão de submissão -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-danger" style="background-color: #d9534f;  color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-danger">
                         </form>
                     </div>
                 </div>

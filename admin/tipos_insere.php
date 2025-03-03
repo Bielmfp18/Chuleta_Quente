@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                             <!-- btn enviar -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" style = "background-color: #f0ad4e;">
+                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" >
                         </form>
                     </div><!-- fecha alert -->
                 </div><!-- fecha thumbnail -->
