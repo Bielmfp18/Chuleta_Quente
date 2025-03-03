@@ -26,7 +26,8 @@ $numrow = $lista->num_rows;
 <body class="">
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h1 class="breadcrumb alert-info">Lista de Clientes</h1>
+    <h1 class="breadcrumb alert-success">Lista de Clientes</h1>
+
         <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
             <table class="table table-hover table-condensed tbopacidade">
                 <thead>

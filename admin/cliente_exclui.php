@@ -5,17 +5,18 @@ include '../conn/connect.php';
 if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
-    $idcliente = $_GET['usuario_id'];
+ 
 
+    $sqlcliente = $conn->query("DELETE FROM cliente WHERE usuario_id = $id ");
+    
     $sqluser = $conn->query("DELETE FROM usuarios WHERE id = $id ");
+    
 
-
-    $sqlcliente = $conn->query("DELETE FROM cliente WHERE usuario_id = $idcliente ");
 
 
     //O if-else faz com que a página após mostrar a mensagem em JavaScript recarregue na página "original" após dar "ok".
     //Recarrega a página usuários_lista.php(original).
-    if ($sqlcliente && $sqluser) {
+    if ($sqluser&&$sqlcliente) {
         echo "<script>
             alert('Cliente deletado com sucesso!');
             window.location.href='cliente_lista.php';

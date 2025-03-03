@@ -59,20 +59,20 @@ ALTER TABLE `tipos`
 
 -- Estrutura para tabela `tipos`
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11)  NOT NULL,
   `login` varchar(30) NOT NULL,
   `senha` varchar(32) NOT NULL,
   `nivel` ENUM('sup','com') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Inserindo Dados na Tabela `usuarios'
-INSERT INTO `usuarios` 
-	(`id`, `login`, `senha`, `nivel`) 
-	VALUES
-		(1, 'senac', md5('1234'), 'sup'),
-		(2, 'joao', md5('456'), 'com'),
-		(3, 'maria', md5('789'), 'com'),
-		(4, 'well', md5('1234'), 'sup');
+ INSERT INTO `usuarios` 
+	 (`id`, `login`, `senha`, `nivel`) 
+	 VALUES
+		 (1, 'senac', md5('1234'), 'sup'),
+		 (2, 'joao', md5('456'), 'com'),
+		 (3, 'maria', md5('789'), 'com'),
+		 (4, 'well', md5('1234'), 'sup');
 
 -- Índices de tabela `tipos`
 ALTER TABLE `usuarios`
@@ -109,16 +109,19 @@ COMMIT;
 -- Criando a tabela de cliente
 
 create table cliente (
-id int primary key auto_increment not null,
+ id int(11) primary key NOT NULL,
 usuario_id int not null,
 nome varchar(100) not null,
 email varchar(100) not null UNIQUE,
 cpf char(14) not null UNIQUE,
 foreign key (usuario_id) references usuarios(id));
 
+ALTER TABLE cliente
+  MODIFY id int(11)  AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 -- Criando a tabela de reserva
 create table reserva(
-id int primary key auto_increment not null,
+id int(11) primary key auto_increment not null,
 cliente_cpf char(14) not null,
 cliente_email varchar(100) not null,
 data date not null,
