@@ -1,5 +1,5 @@
 <?php
-include 'acesso_com.php';
+include '../admin/acesso_com.php';
 include '../conn/connect.php';
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include "menu_adm.php"; ?>
+
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
