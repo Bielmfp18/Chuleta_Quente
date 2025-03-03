@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
             <h2 class="breadcrumb alert-warning">
-                    <a href="tipos_lista.php">
+                    <a href="tipos_lista.php" style = "text-decoration: none;">
                     <button class="btn btn-warning" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>

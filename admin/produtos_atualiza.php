@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
         <div class="row">
          <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
                 <h2 class="thumbnail alert-danger">
-                    <a href="produtos_lista.php">
+                    <a href="produtos_lista.php" style = "text-decoration: none;">
                         <button class="btn btn-alert-danger" type="button" style="background-color: #d9534f; color: white;">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
