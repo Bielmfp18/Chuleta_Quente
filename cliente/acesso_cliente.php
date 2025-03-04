@@ -9,14 +9,14 @@ if (!isset($_SESSION)) {
 //Segurança Digital
 //Verificar se o usuário está logado na sessão.
 //  $_SESSION['login_usuario']="aluno";
-if (!isset($_SESSION['login_usuario'])) {
+if (!isset($_SESSION['login_cliente'])) {
     //Se não existir, redirecionamos para login a sessão por segurança
-    header('location: login.php'); //Redirecionamento
+    header('location: login_cliente.php'); //Redirecionamento
     exit;
 }
 //Se houver uma ação de invasão por acesso não permitido à página pós-login, ele irá destruir a session.
 $nome_da_sessao = session_name();
 if (!isset($_SESSION['nome_da_sessao']) or ($_SESSION['nome_da_sessao'] != $nome_da_sessao)) {
     session_destroy();
-    header('location: login.php');
+    header('location: login_cliente.php');
 }

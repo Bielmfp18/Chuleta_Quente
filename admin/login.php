@@ -12,8 +12,8 @@ if ($_POST) {
     $numRow = $loginresult->num_rows;
     if (!isset($_SESSION)) {
         $sessionAntiga = session_name('chulettaaa');
-        session_start();
         $session_name_new = session_name();
+        session_start();
     }
     if($numRow > 0){
 $_SESSION['login_usuario'] = $login;

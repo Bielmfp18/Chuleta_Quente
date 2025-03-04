@@ -1,3 +1,5 @@
+<?php include 'acesso_com.php';?>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
 <nav class="nav navbar-inverse">
     <div class="container-fluid">

@@ -110,9 +110,9 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                         <span class="glyphicon glyphicon-user"></span>&nbsp;ADMIN/CLIENTE</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="admin/index.php">Login Admin</a></li>
-                        <li><a href="cliente/login_cliente.php">Login Cliente</a></li>
-                        <li><a href="cliente/cadastro_cliente.php">Cadastro Cliente</a></li>
+                        <li><a href="admin/index.php">Login (ADM)</a></li>
+                        <li><a href="../modelophp/cliente/login_cliente.php">Login (Cliente)</a></li>
+                        <li><a href="../modelophp/cliente/cadastro_cliente.php">Cadastro</a></li>
                     </ul>
                 </li>
 

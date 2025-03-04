@@ -1,5 +1,5 @@
 <?php
-include '../admin/acesso_com.php';
+
 include '../conn/connect.php';
 include '../admin/menu_adm.php';
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($clienteResult) {
             echo "<script>
                 alert('Cliente inserido com sucesso!');
-                window.location.href='../admin/cliente_lista.php';
+                window.location.href='index.php';
               </script>";
         } else {
             echo "<script>

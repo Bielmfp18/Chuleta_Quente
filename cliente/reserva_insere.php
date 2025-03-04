@@ -1,5 +1,5 @@
 <?php
-include '../admin/acesso_com.php';
+include 'acesso_cliente.php';
 include '../conn/connect.php';
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
