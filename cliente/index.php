@@ -1,5 +1,5 @@
 <?php 
-
+include 'acesso_cliente.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php 
-    include "menu_adm_cliente.php";
+
     include 'reserva_insere.php';
     ?>
 

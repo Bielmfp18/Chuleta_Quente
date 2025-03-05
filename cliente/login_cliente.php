@@ -62,7 +62,7 @@ if ($_POST) {
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
                                         </span>
-                                        <input type="text" name="email" id="email" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
+                                        <input type="text" name="email" id="email" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu email.">
                                     </p>
                                   
                                     <label for="cpf">CPF:</label>
@@ -72,7 +72,7 @@ if ($_POST) {
                                         </span>
                                         <input type="text" name="cpf" id="cpf" maxlength="14"
                                             pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                                            placeholder="000.000.000-00" required>
+                                            placeholder="000.000.000-00" class="form-control" required>
                                     </p>
                                     <p class="text-right">
                                         <input type="submit" value="Entrar" class="btn btn-primary">

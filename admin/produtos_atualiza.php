@@ -112,13 +112,17 @@ if (isset($_GET['id'])) {
                             <br>
 
                             <!-- Campo do resumo -->
-                            <label for="resumo">Resumo</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="resumo" value="<?php echo $produto['resumo']; ?>" id="resumo" maxlength="80" placeholder="Digite o resumo" class="form-control" required autocomplete="off">
-                            </div>
+                            <label for="resumo">Resumo:</label>     
+                        <div class="input-group">
+                           <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                           </span>
+                           <textarea  name="resumo" id="resumo"
+                                cols="30" rows="8"
+                                class="form-control" placeholder="Digite os detalhes do Produto"
+                                ><?php echo $produto['resumo'] ?> 
+                            </textarea>
+                        </div>
                             <br>
 
                             <!-- Campo do valor -->

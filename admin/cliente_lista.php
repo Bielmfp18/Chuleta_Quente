@@ -39,7 +39,7 @@ $numrow = $lista->num_rows;
                         <th>EMAIL</th>
                         <th>CPF</th>
                         <th>
-                            <a href="../cliente/cadastro_cliente.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
+                            <a href="cliente_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="hidden-xs">ADICIONAR <br></span>
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>

@@ -3,7 +3,7 @@ include 'acesso_com.php';
 include "../conn/connect.php";
 
 
-$lista = $conn->query("SELECT * FROM reserva order by id "); //Vai organizar as reservas começando pelo id.
+$lista = $conn->query("SELECT * FROM reserva where ativo = 1 order by id "); //Vai organizar as reservas começando pelo id.
 $row = $lista->fetch_assoc();
 $numrow = $lista->num_rows;
 

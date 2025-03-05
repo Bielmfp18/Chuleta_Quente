@@ -2,118 +2,150 @@
 include 'acesso_cliente.php';
 include '../conn/connect.php';
 
-//if ($_SERVER["REQUEST_METHOD"] == "POST") ->  Evita q a mensagem de erro apareça quando eu recarregar a página.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $cliente_cpf = $_POST['cliente_cpf']; 
-     $cliente_email = $_POST['cliente_email'];
-    $data_horario= $_POST['data_horario'];
-    $num_pessoas = $_POST['num_pessoas'];
-    $motivo = $_POST['motivo'];
-    $status = $_POST['status'];
-  
+    // Recupera os dados enviados pelo formulário
+    $cliente_cpf   = $_POST['cpf'];
+    $cliente_email = $_POST['email'];
+    $data          = $_POST['data'];
+    $horario       = $_POST['horario'];
+    $num_pessoas   = $_POST['num_pessoas'];
+    $motivo        = $_POST['motivo'];
+    $status        = $_POST['status']; // Deve ser 1 para reserva ativa
+
+    // Monta a query especificando os campos (boa prática para evitar problemas com a ordem dos campos)
+    $sql = "INSERT INTO reserva (id, cliente_cpf, cliente_email, data, horario, num_pessoas, motivo, ativo) 
+            VALUES (0, '$cliente_cpf', '$cliente_email', '$data', '$horario', $num_pessoas, '$motivo', $status)";
 
     try {
-        // Tenta inserir o usuário no banco
-        $reservaresult = $conn->query("INSERT INTO reserva VALUES (0, '$cliente_cpf', '$cliente_email', '$data_horario', $num_pessoas, '$motivo', $status)");
-
-        if ($reservaresult) {
-            // Mensagem de sucesso ao inserir um novo usuário.
-            echo "<script>
-            alert('Nova reserva inserida com sucesso!');
-            window.location.href='reserva_lista.php';
-          </script>";
-        } else {
-            // Mensagem de erro apenas se houver falha na inserção do usuário.
-            echo "<script>
-            alert('Erro ao tentar inserir a nova reserva.');
-            window.location.href='reserva_insere.php';
-          </script>";
+        // Executa a query e, se houver erro, lança uma exceção com a mensagem do MySQL
+        if (!$conn->query($sql)) {
+            throw new mysqli_sql_exception($conn->error, $conn->errno);
         }
-        //Essa parte do código utiliza um método/função chamada getCode() da classe Exception (subclasse: mysqli_sql_exception)
-        // que captura um erro e o mostra ao usuário em seu código de verificação (exemplo: Para entradas duplicadas no Banco de Dados -> Código 1062).
+
+        echo "<script>
+                alert('Nova reserva inserida com sucesso!');
+                window.location.href='reserva_lista.php';
+              </script>";
     } catch (mysqli_sql_exception $e) {
-        // Captura erro de entrada duplicada (código 1062) e exibe uma mensagem de erro.
+        // Se o erro for de duplicidade (código 1062), exibe a mensagem correspondente
         if ($e->getCode() == 1062) {
             echo "<script>
-            alert('Este reserva já está cadastrado!');
-            window.location.href='reserva_insere.php';
-          </script>";
+                    alert('Esta reserva já está cadastrada!');
+                    window.location.href='index.php';
+                  </script>";
         } else {
-           echo "<script>
-            alert('Erro ao tentar inserir a nova reserva. Tente novamente!');
-            window.location.href='reserva_insere.php';
-          </script>";
+            // Exibe o erro real para ajudar na depuração
+            echo "<script>
+                    alert('Erro ao tentar inserir a nova reserva. Erro: " . $e->getMessage() . "');
+                    window.location.href='index.php';
+                  </script>";
         }
     }
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <title>reserva - Insere</title>
     <meta charset="UTF-8">
-    <!-- Link arquivos Bootstrap CSS -->
+    <title>Área de Cliente - Chuleta Quente</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap e CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <!-- Link para CSS específico -->
-    <link rel="stylesheet" href="../css/meu_estilo.css" type="text/css">
-    
-    <!-- Link para o Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/estilo.css" type="text/css">
 </head>
 
 <body>
+    <?php include "menu_adm_cliente.php"; ?>
 
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4"><!-- dimensionamento -->
-            <h2 class="breadcrumb alert-warning">
-                    <a href="tipos_lista.php" style = "text-decoration: none;">
-                    <button class="btn btn-warning" type="button">
-                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
-                        </button>
-                    </a>
-                    Inserindo reservas
-                </h2>
-                <div class="thumbnail" style = "padding : 7px; ">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <h2 class="breadcrumb alert-warning">Pedido de Reserva</h2>
+                <div class="thumbnail" style="padding: 7px;">
                     <div class="alert alert-warning">
-                        <form action="tipos_insere.php" name="form_insere_tipo" id="form_insere_tipo" method="POST" enctype="multipart/form-data">
-                            <!-- input rotulo -->
-                             
-                            <label for="rotulo">CPF:</label>
+                        <!-- Action vazia para postar para o próprio arquivo -->
+                        <form action="" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
+                            <!-- Campo CPF -->
+                            <label for="cpf">CPF:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-edit text-info" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="rotulo" id="rotulo" autofocus maxlength="30" placeholder="Digite o rótulo." class="form-control" required autocomplete="off">
-                            </div><!-- fecha input-group -->
-                            <br>
-                            <!-- fecha input rotulo -->
+                                <input
+                                    type="text"
+                                    name="cpf"
+                                    id="cpf"
+                                    maxlength="14"
+                                    pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                                    placeholder="000.000.000-00"
+                                    class="form-control"
+                                    required>
 
-                            <!-- input sigla -->
-                            <label for="sigla">Sigla:</label>
+                            </div>
+                            <br>
+                            <!-- Campo Email -->
+                            <label for="email">Email:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="sigla" id="sigla" maxlength="8" placeholder="Digite a sigla desejada." class="form-control" required autocomplete="off">
-                            </div><!-- fecha input-group -->
+                                <input type="text" name="email" id="email" maxlength="300" placeholder="Digite seu email." class="form-control" required autocomplete="off">
+                            </div>
                             <br>
-                            <!-- fecha input sigla_tipo -->
+                            <!-- Campo Data -->
+                            <label for="data">Data:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                </span>
+                                <input type="date" name="data" id="data" value="2025-03-05" class="form-control" required autocomplete="off">
+                            </div>
+                            <br>
+                            <!-- Campo Horário -->
+                            <label for="horario">Horário:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                </span>
+                                <input type="time" name="horario" id="horario" value="12:00" class="form-control" required autocomplete="off">
+                            </div>
+                            <br>
+                            <!-- Número de Pessoas -->
+                            <label for="num_pessoas">Número de Pessoas:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </span>
+                                <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
+                            </div>
+                            <br>
+                            <!-- Campo Motivo -->
+                            <label for="motivo">Motivo:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                </span>
+                                <textarea name="motivo" id="motivo" placeholder='Digite seu motivo (Ex: "Casamento", "Aniversário", etc.)' class="form-control" required autocomplete="off"></textarea>
+                            </div>
+                            <br>
+                            <!-- Campo Status oculto (1 = ativo) -->
+                            <input type="hidden" name="status" id="status" value="1">
 
-
-                            <!-- btn enviar -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning" style = "background-color: #f0ad4e;">
+                            <!-- Botão Enviar -->
+                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning">
                         </form>
-                    </div><!-- fecha alert -->
-                </div><!-- fecha thumbnail -->
-            </div><!-- Fecha dimensionamento -->
-        </div><!-- Fecha row -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- Link arquivos Bootstrap js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1
+    <!-- Scripts do Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+
+</html>

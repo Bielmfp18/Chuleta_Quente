@@ -141,7 +141,7 @@
         </a>
     </div><!-- fecha btn-group -->
     <div class="btn-group">
-        <a href="../cliente/cadastro_cliente.php">
+        <a href="cliente_insere.php">
             <button class="btn btn-success">
                 INSERIR
             </button>
