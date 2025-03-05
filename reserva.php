@@ -52,7 +52,7 @@
 
 <body>
     <div class="container2">
-        <a href="pedidos_reserva.php" style = "text-decoration: none;" class="btn-reserva">Fazer Reserva</a>
+        <a href="../modelophp/cliente/reserva_insere.php"  style = "text-decoration: none;" class="btn-reserva">Fazer Reserva</a>
     </div>
 
     <div class="promo-banner">
