@@ -25,14 +25,14 @@
                     </button>
                 </li>
                 <li class="active"><a href="index.php">CLIENTE</a></li>
-                <li><a href="reserva_lista.php">RESERVAS</a></li>
+                <li><a href="../cliente/reserva_lista_cliente.php">RESERVAS</a></li>
                 <li class="active">
                     <a href="../index.php">
                       <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="logout.php">
+                    <a href="logout_cliente.php">
                         <span class="glyphicon glyphicon-log-out"></span>
                     </a>
                 </li>

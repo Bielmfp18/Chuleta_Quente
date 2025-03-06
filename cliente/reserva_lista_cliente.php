@@ -1,5 +1,5 @@
 <?php
-include 'acesso_com.php';
+include 'acesso_cliente.php';
 include "../conn/connect.php";
 
 
@@ -26,7 +26,7 @@ $numrow = $lista->num_rows;
 </head>
 
 <body class="">
-    <?php include "menu_adm.php"; ?>
+    <?php include "menu_adm_cliente.php"; ?>
     <main class="container">
         <h1 class="breadcrumb alert-primary">Lista de Reservas</h1>
 
@@ -62,20 +62,11 @@ $numrow = $lista->num_rows;
                             <td class = "hidden"><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
 
                             <td>
-                             <a href="reserva_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
-                                <span class="hidden-xs">ADICIONAR <br></span>
+                             <a href="pedido_reserva.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
+                                <span class="hidden-xs">FAZER RESERVA <br></span>
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>
-    
-                            
-                            <a href="reserva_atualiza.php" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">ALTERAR <br></span>
-                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                                </a>
-                                <button data-nome="" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">DESATIVAR<br></span>
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+
                             </td>
                         </tr>
                     <?php } while ($row = $lista->fetch_assoc()); ?>
