@@ -114,9 +114,10 @@ COMMIT;
 CREATE TABLE `cliente` (
   `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
-  `nome` VARCHAR(100) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL UNIQUE,
   `email` VARCHAR(100) NOT NULL UNIQUE,
   `cpf` CHAR(14) NOT NULL UNIQUE,
+  `senha` VARCHAR(80) NOT NULL 
   -- Exemplo de FK se desejar ligar com a tabela usuarios
   -- FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`)
   -- ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -129,6 +130,7 @@ CREATE TABLE `cliente` (
 -- Cria a tabela reserva
 CREATE TABLE `reserva` (
   `id` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `cliente_nome` VARCHAR(100) NOT NULL,
   `cliente_cpf` CHAR(14) NOT NULL,
   `cliente_email` VARCHAR(100) NOT NULL,
   `data` DATE NOT NULL,
@@ -137,16 +139,8 @@ CREATE TABLE `reserva` (
   `motivo` VARCHAR(70) NOT NULL,
   `ativo` BIT NOT NULL DEFAULT 1,
   -- Chaves estrangeiras
+    FOREIGN KEY (`cliente_nome`) REFERENCES `cliente`(`nome`),
   FOREIGN KEY (`cliente_cpf`) REFERENCES `cliente`(`cpf`),
   FOREIGN KEY (`cliente_email`) REFERENCES `cliente`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Insere um cliente para depois referenciá-lo em reserva
-INSERT INTO `cliente` (usuario_id, nome, email, cpf)
-VALUES (1, 'João da Silva', 'teste@teste.com', '512.608.588-39');
-
--- Agora, insere a reserva referenciando o mesmo cpf e email
-INSERT INTO `reserva` 
-  (cliente_cpf, cliente_email, data, horario, num_pessoas, motivo, ativo)
-VALUES
-  ('512.608.588-39', 'teste@teste.com', '2025-03-05', '12:00', 5, 'Aniversário', 1);

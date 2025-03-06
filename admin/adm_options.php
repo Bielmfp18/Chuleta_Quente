@@ -178,7 +178,7 @@
                     </a>
                 </div><!-- fecha btn-group -->
                 <div class="btn-group">
-                    <a href="reserva.php">
+                    <a href="reserva_insere.php">
                         <button class="btn btn-info">
                             INSERIR
                         </button>

@@ -1,5 +1,5 @@
 <?php
-include 'acesso_com.php';
+include '../admin/acesso_com.php';
 include '../conn/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -44,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -56,107 +55,113 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Bootstrap e CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css" type="text/css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <?php include "menu_adm.php"; ?>
-
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-            <h2 class="breadcrumb alert-primary">
-                        <a href="reserva_lista.php" style="text-decoration: none;">
-                            <button class="btn btn-primary" type="button">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            </button>
-                        </a>
-                       Inserindo Reserva
-                    </h2>
-                        <!-- Action vazia para postar para o próprio arquivo -->
-                        <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
-                        <!-- Campo nome -->
-                        <div class="thumbnail">
-                    <div class="alert alert-success">
-                            <label for="login">Nome Completo:</label>
+                <h2 class="breadcrumb alert-primary">
+                    <a href="reserva_lista.php" style="text-decoration: none;">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                    </a>
+                    Pedido de Reserva
+                </h2>
+                <!-- Action vazia para postar para o próprio arquivo -->
+                <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
+                    <div class="thumbnail">
+                        <div class="alert alert-success">
+                            <!-- Campo Nome -->
+                            <label for="nome">Nome Completo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="fas fa-user text-success" aria-hidden="true"></span>
+                                    <i class="fas fa-user text-success" aria-hidden="true"></i>
                                 </span>
                                 <input type="text" name="nome" id="nome" autofocus maxlength="100" placeholder="Digite o nome completo" class="form-control" required autocomplete="on">
                             </div>
                             <br>
-                        
-                        <!-- Campo CPF -->
+
+                            <!-- Campo CPF -->
                             <label for="cpf">CPF:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-edit text-info" aria-hidden="true"></span>
+                                    <i class="fas fa-id-card text-info" aria-hidden="true"></i>
                                 </span>
-                                <input
-                                    type="text"
-                                    name="cpf"
-                                    id="cpf"
-                                    maxlength="14"
-                                    pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-                                    placeholder="000.000.000-00"
-                                    class="form-control"
-                                    required>
-
+                                <input type="text" name="cpf" id="cpf" maxlength="14" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" placeholder="000.000.000-00" class="form-control" required>
                             </div>
                             <br>
+
                             <!-- Campo Email -->
                             <label for="email">Email:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
                                 </span>
                                 <input type="text" name="email" id="email" maxlength="300" placeholder="Digite seu email." class="form-control" required autocomplete="off">
                             </div>
                             <br>
+
                             <!-- Campo Data -->
                             <label for="data">Data:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                                 </span>
                                 <input type="date" name="data" id="data" value="2025-03-05" class="form-control" required autocomplete="off">
                             </div>
                             <br>
+
                             <!-- Campo Horário -->
                             <label for="horario">Horário:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
                                 </span>
                                 <input type="time" name="horario" id="horario" value="12:00" class="form-control" required autocomplete="off">
                             </div>
                             <br>
+
                             <!-- Número de Pessoas -->
                             <label for="num_pessoas">Número de Pessoas:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    <i class="fas fa-users" aria-hidden="true"></i>
                                 </span>
                                 <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
                             </div>
                             <br>
+
                             <!-- Campo Motivo -->
                             <label for="motivo">Motivo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    <i class="fas fa-comment" aria-hidden="true"></i>
                                 </span>
                                 <textarea name="motivo" id="motivo" placeholder='Digite seu motivo (Ex: "Casamento", "Aniversário", etc.)' class="form-control" required autocomplete="off"></textarea>
                             </div>
                             <br>
+
                             <!-- Campo Status oculto (1 = ativo) -->
                             <input type="hidden" name="status" id="status" value="1">
 
-                            <!-- Botão Enviar -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-primary">
-                        </form>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <!-- Botão de Cancelar -->
+                                    <a href="../admin/reserva_desativa.php" class="btn btn-danger btn-block">Cancelar</a>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <!-- Botão de Fazer o Pedido -->
+                                    <input type="submit" value="Fazer o Pedido" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block">
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>

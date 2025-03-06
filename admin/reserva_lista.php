@@ -26,7 +26,7 @@ $numrow = $lista->num_rows;
 <body class="">
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h1 class="breadcrumb alert-success">Lista de Reservas</h1>
+        <h1 class="breadcrumb alert-primary">Lista de Reservas</h1>
 
 
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->

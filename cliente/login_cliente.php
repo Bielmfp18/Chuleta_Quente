@@ -4,8 +4,9 @@ include '../conn/connect.php';
 if ($_POST) {
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
+    $senha = $_POST['senha'];
     // echo base64_encode();
-    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf'");
+    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = '$senha'");
     $rowLogin = $loginresult->fetch_assoc();
     // var_dump($rowLogin);
     // die();
@@ -19,7 +20,7 @@ if ($_POST) {
         $_SESSION['login_cliente'] = $rowLogin['email'];
         $_SESSION['cpf_cliente'] = $rowLogin['cpf'];
         $_SESSION['nome_da_sessao'] = session_name();
-        if ($rowLogin['email'] == $email &&  $rowLogin['cpf'] == $cpf){
+        if ($rowLogin['email'] == $email &&  $rowLogin['cpf'] == $cpf && $rowLogin['senha']){
             echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
         } else {
             echo "<script>window.open('index.php?cliente=" . $email . "','_self')</script>"; //self carrega a página na mesma aba.
@@ -74,6 +75,15 @@ if ($_POST) {
                                             pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
                                             placeholder="000.000.000-00" class="form-control" required>
                                     </p>
+                                    
+                                    <label for="senha">Senha:</label>
+                                    <p class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
+                                        </span>
+                                        <input type="password" name="senha" id="senha" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
+                                    </p>
+                                    <br>
                                     <p class="text-right">
                                         <input type="submit" value="Entrar" class="btn btn-primary">
                                     </p>
