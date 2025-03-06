@@ -62,8 +62,8 @@ $numrow = $lista->num_rows;
                             <td class = "hidden"><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
 
                             <td>
-                            <a href="reserva_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
-                                <span class="hidden-xs">ADICIONAR <br></span>
+                            <a href="reserva_confirma.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
+                                <span class="hidden-xs">CONFIRMAR RESERVA<br></span>
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>
     
