@@ -68,12 +68,12 @@ $numrow = $lista->num_rows;
                             </a>
     
                             
-                            <a href="reserva_atualiza.php" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">ALTERAR <br></span>
+                            <a href="reserva_insere.php" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
+                                    <span class="hidden-xs">NÚMERO DA MESA <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>
                                 <button data-nome="" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">DESATIVAR<br></span>
+                                    <span class="hidden-xs">DESATIVAR RESERVA<br></span>
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>
