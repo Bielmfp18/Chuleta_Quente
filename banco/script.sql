@@ -117,7 +117,7 @@ CREATE TABLE `cliente` (
   `nome` VARCHAR(100) NOT NULL UNIQUE,
   `email` VARCHAR(100) NOT NULL UNIQUE,
   `cpf` CHAR(14) NOT NULL UNIQUE,
-  `senha` VARCHAR(80) NOT NULL 
+  `senha` VARCHAR(80) NOT NULL,
   -- Exemplo de FK se desejar ligar com a tabela usuarios
   -- FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`)
   -- ON DELETE NO ACTION ON UPDATE NO ACTION
