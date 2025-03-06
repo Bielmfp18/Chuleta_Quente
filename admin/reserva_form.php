@@ -24,7 +24,7 @@
                     </div>
                     <div class="panel-footer text-center">
                         <!-- Botão para direcionar para o formulário de pedido -->
-                        <a href="reserva_insere.php" class="btn btn-primary btn-lg">
+                        <a href="../cliente/pedido_reserva.php" class="btn btn-primary btn-lg">
                             Aceito as Regras e Fazer o Pedido
                         </a>
                     </div>

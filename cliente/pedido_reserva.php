@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <h2 class="breadcrumb alert-primary">
-                    <a href="reserva_lista.php" style="text-decoration: none;">
+                    <a href="../index.php" style="text-decoration: none;">
                         <button class="btn btn-primary" type="button">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
                         </button>
