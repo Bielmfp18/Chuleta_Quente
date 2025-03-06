@@ -134,6 +134,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
                             </div>
                             <br>
+                                
+
+
+                           <!-- Número de Pessoas -->
+                              <label for="hidden">Número de Pessoas:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                </span>
+                                <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
+                            </div>
+                            <br>
+                                
+
+
+
 
                             <!-- Campo Motivo -->
                             <label for="motivo">Motivo:</label>
