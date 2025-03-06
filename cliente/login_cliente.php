@@ -1,5 +1,4 @@
 <?php
-
 include '../conn/connect.php';
 //Inicia a verificação do login.
 if ($_POST) {
@@ -7,24 +6,24 @@ if ($_POST) {
     $cpf = $_POST['cpf'];
     $senha = $_POST['senha'];
     // echo base64_encode();
-    $loginresult = $conn->query("SELECT * FROM usuarios WHERE email = '$email', senha = md5('$senha') AND cpf = '$cpf'");
+    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = '$senha'");
     $rowLogin = $loginresult->fetch_assoc();
     // var_dump($rowLogin);
     // die();
+    $sessionAntiga = session_name('chulettaaa');
     $numRow = $loginresult->num_rows;
     if (!isset($_SESSION)) {
-        $sessionAntiga = session_name('chulettaaa');
-        session_start();
         $session_name_new = session_name();
+        session_start();
     }
     if ($numRow > 0) {
-        $_SESSION['login_cliente'] = $email;
-        $_SESSION['nivel_cliente'] = $rowLogin['nivel_cliente'];
+        $_SESSION['login_cliente'] = $rowLogin['email'];
+        $_SESSION['cpf_cliente'] = $rowLogin['cpf'];
         $_SESSION['nome_da_sessao'] = session_name();
-        if ($rowLogin['nivel'] == 'com') {
-            echo "<script>window.open('pedidos_reserva.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
+        if ($rowLogin['email'] == $email &&  $rowLogin['cpf'] == $cpf && $rowLogin['senha']){
+            echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
         } else {
-            echo "<script>window.open('../cliente/index.php?cliente=" . $email . "','_self')</script>"; //self carrega a página na mesma aba.
+            echo "<script>window.open('index.php?cliente=" . $email . "','_self')</script>"; //self carrega a página na mesma aba.
         }
     }
 }
@@ -58,21 +57,15 @@ if ($_POST) {
                             </p>
                             <br>
                             <div class="alert alert-info" role="alert">
-                                <form action="login.php" name="form_email" id="form_email" method="POST" enctype="multipart/form-data">
+                                <form action="login_cliente.php" name="form_email" id="form_email" method="POST" enctype="multipart/form-data">
                                     <label for="login_email">Email:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
                                         </span>
-                                        <input type="text" name="login_cliente" id="login_cliente" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
+                                        <input type="text" name="email" id="email" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu email.">
                                     </p>
-                                    <label for="senha">Senha:</label>
-                                    <p class="input-group">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
-                                        </span>
-                                        <input type="password" name="senha" id="senha" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
-                                    </p>
+                                  
                                     <label for="cpf">CPF:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
@@ -80,8 +73,17 @@ if ($_POST) {
                                         </span>
                                         <input type="text" name="cpf" id="cpf" maxlength="14"
                                             pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                                            placeholder="000.000.000-00" required>
+                                            placeholder="000.000.000-00" class="form-control" required>
                                     </p>
+                                    
+                                    <label for="senha">Senha:</label>
+                                    <p class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
+                                        </span>
+                                        <input type="password" name="senha" id="senha" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
+                                    </p>
+                                    <br>
                                     <p class="text-right">
                                         <input type="submit" value="Entrar" class="btn btn-primary">
                                     </p>

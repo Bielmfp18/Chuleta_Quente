@@ -59,20 +59,20 @@ ALTER TABLE `tipos`
 
 -- Estrutura para tabela `tipos`
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11)  NOT NULL,
   `login` varchar(30) NOT NULL,
   `senha` varchar(32) NOT NULL,
   `nivel` ENUM('sup','com') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Inserindo Dados na Tabela `usuarios'
-INSERT INTO `usuarios` 
-	(`id`, `login`, `senha`, `nivel`) 
-	VALUES
-		(1, 'senac', md5('1234'), 'sup'),
-		(2, 'joao', md5('456'), 'com'),
-		(3, 'maria', md5('789'), 'com'),
-		(4, 'well', md5('1234'), 'sup');
+ INSERT INTO `usuarios` 
+	 (`id`, `login`, `senha`, `nivel`) 
+	 VALUES
+		 (1, 'senac', md5('1234'), 'sup'),
+		 (2, 'joao', md5('456'), 'com'),
+		 (3, 'maria', md5('789'), 'com'),
+		 (4, 'well', md5('1234'), 'sup');
 
 -- Índices de tabela `tipos`
 ALTER TABLE `usuarios`
@@ -106,24 +106,41 @@ CREATE VIEW vw_produtos AS
 	WHERE p.tipo_id=t.id;
 COMMIT;
 
--- Criando a tabela de cliente
 
-create table cliente (
-id int primary key auto_increment not null,
-usuario_id int not null,
-nome varchar(100) not null,
-email varchar(100) not null UNIQUE,
-cpf char(14) not null UNIQUE,
-foreign key (usuario_id) references usuarios(id));
 
--- Criando a tabela de reserva
-create table reserva(
-id int primary key auto_increment not null,
-cliente_cpf char(14) not null,
-cliente_email varchar(100) not null,
-data date not null,
-horario time not null,
-motivo varchar(70) not null,
-ativo bit not null,
-foreign key(cliente_cpf) references cliente(cpf),
-foreign key (cliente_email) references cliente(email));
+
+
+-- Cria a tabela de cliente
+CREATE TABLE `cliente` (
+  `id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT NOT NULL,
+  `nome` VARCHAR(100) NOT NULL UNIQUE,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `cpf` CHAR(14) NOT NULL UNIQUE,
+  `senha` VARCHAR(80) NOT NULL 
+  -- Exemplo de FK se desejar ligar com a tabela usuarios
+  -- FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`)
+  -- ON DELETE NO ACTION ON UPDATE NO ACTION
+  -- mas isso só vai funcionar se existir a tabela usuarios
+  -- Se não existir, pode remover a linha acima
+  KEY (`email`),    -- redundante, mas ajuda em performance
+  KEY (`cpf`)       -- redundante, mas ajuda em performance
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Cria a tabela reserva
+CREATE TABLE `reserva` (
+  `id` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  `cliente_nome` VARCHAR(100) NOT NULL,
+  `cliente_cpf` CHAR(14) NOT NULL,
+  `cliente_email` VARCHAR(100) NOT NULL,
+  `data` DATE NOT NULL,
+  `horario` TIME NOT NULL,
+  `num_pessoas` INT(2) NOT NULL,
+  `motivo` VARCHAR(70) NOT NULL,
+  `ativo` BIT NOT NULL DEFAULT 1,
+  -- Chaves estrangeiras
+    FOREIGN KEY (`cliente_nome`) REFERENCES `cliente`(`nome`),
+  FOREIGN KEY (`cliente_cpf`) REFERENCES `cliente`(`cpf`),
+  FOREIGN KEY (`cliente_email`) REFERENCES `cliente`(`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

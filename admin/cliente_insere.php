@@ -1,7 +1,7 @@
 <?php
 
 include '../conn/connect.php';
-
+include '../admin/menu_adm.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -29,18 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($clienteResult) {
             echo "<script>
-                alert('Cliente cadastrado com sucesso!');
-                window.location.href='../index.php';
+                alert('Cliente inserido com sucesso!');
+                window.location.href='index.php';
               </script>";
         } else {
             echo "<script>
-                alert('Erro ao tentar cadastrar o cliente.');
+                alert('Erro ao tentar inserir o cliente.');
                 window.location.href='cadastro_cliente.php';
               </script>";
         }
     } else {
         echo "<script>
-            alert('Erro ao tentar cadastrar o cliente.');
+            alert('Erro ao tentar inserir o cliente.');
             window.location.href='cadastro_cliente.php';
           </script>";
     }
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
                     </a>
-                    Cadastro de Cliente
+                   Inserindo Cliente
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-success">

@@ -115,8 +115,80 @@
     </div><!-- fecha thumbnail -->
 </div><!-- fecha col -->
 <!-- fecha ADM USUÁRIOS -->
-
-
 </div><!-- fecha row -->
 
-</main> 
+<!-- ADM CLIENTES -->
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail alert-success">
+        <img src="../imagens/icone_cliente.png" alt="">
+        <br>
+<div class="alert-success">
+
+<div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group">
+        <button class="btn btn-default disabled" role="alert" style="cursor: default;">
+      CLIENTES
+        </button>
+    </div><!-- fecha btn-group -->
+</div><!-- fecha btn-group-justified -->
+
+<div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group">
+        <a href="cliente_lista.php">
+            <button class="btn btn-success">
+                LISTAR
+            </button>
+        </a>
+    </div><!-- fecha btn-group -->
+    <div class="btn-group">
+        <a href="cliente_insere.php">
+            <button class="btn btn-success">
+                INSERIR
+            </button>
+        </a>
+        </div><!-- fecha btn-group -->
+</div><!-- fecha btn-group-justified -->
+
+</div><!-- fecha alert-success -->
+</div><!-- fecha thumbnail -->
+</div><!-- fecha col -->
+<!-- fecha ADM CLIENTES -->
+
+<!-- ADM RESERVAS -->
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail alert-primary">
+        <img src="../imagens/icone_reserva.png" alt="">
+        <br>
+        <div class="alert-primary">
+
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group">
+                    <button class="btn btn-info disabled" role="alert" style="cursor: default;">
+                        RESERVAS
+                    </button>
+                </div><!-- fecha btn-group -->
+            </div><!-- fecha btn-group-justified -->
+
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group">
+                    <a href="reserva_lista.php">
+                        <button class="btn btn-info">
+                            LISTAR
+                        </button>
+                    </a>
+                </div><!-- fecha btn-group -->
+                <div class="btn-group">
+                    <a href="reserva_insere.php">
+                        <button class="btn btn-info">
+                            INSERIR
+                        </button>
+                    </a>
+                </div><!-- fecha btn-group -->
+            </div><!-- fecha btn-group-justified -->
+
+        </div><!-- fecha alert-info -->
+    </div><!-- fecha thumbnail -->
+</div><!-- fecha col -->
+<!-- fecha ADM CLIENTES -->
+
+</main>
