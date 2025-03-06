@@ -89,7 +89,10 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                 <li><a href="index.php#contato">CONTATO</a></li>
                 <!-- Botão Pedido de Reserva -->
                 <li class="li-separador">
-                <a href="../modelophp-2/cliente/pedido_reserva.php"  class="reserva1">Pedido de Reserva</a>
+<<<<<<< HEAD
+=======
+                    <a href="../modelophp/cliente/pedido_reserva.php"  class="reserva1">Pedido de Reserva</a>
+>>>>>>> 1a0aecb0e64190676f0a2862209e5caf2a997e86
                 </li>
                 <!-- início formulário de busca -->
                 <form action="produtos_busca.php" method="get" name="form-busca"
