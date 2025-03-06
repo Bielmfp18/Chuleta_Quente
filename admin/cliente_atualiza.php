@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="login" value="<?php echo $usuarios['login']; ?>" id="login" maxlength="80" placeholder="Digite o novo login" class="form-control" required autocomplete="on">
+                                <input type="text" name="login" maxlength="80" placeholder="Digite o novo login" class="form-control"  autocomplete="on">
                             </div>
                             <br>
 
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
-                                <input type="password" name="senha" value="" id="senha" maxlength="80" placeholder="Digite a nova senha" class="form-control" required autocomplete="off">
+                                <input type="password" name="senha" value="" id="senha" maxlength="80" placeholder="Digite a nova senha" class="form-control" autocomplete="off">
                             </div>
                             <br>
 

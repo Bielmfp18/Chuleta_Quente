@@ -40,7 +40,7 @@ $numrow = $lista->num_rows;
                         <th  class="text-center">DATA</th>
                         <th  class="text-center">HORÁRIO</th>
                         <th  class="text-center">MOTIVO</th>
-                        <th  class="text-center">STATUS</th>
+                        <th  class="hidden">STATUS</th>
                         <th>
                             <a href="reserva_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="hidden-xs">ADICIONAR <br></span>
@@ -61,14 +61,14 @@ $numrow = $lista->num_rows;
                             <td><?php echo isset($row['data']) ? $row['data'] : "Sem data"; ?></td>
                             <td><?php echo isset($row['horario']) ? $row['horario'] : "Sem horario"; ?></td>
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
-                            <td><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
+                            <td class = "hidden"><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
 
                             <td><a href="reserva_atualiza.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
                                     <span class="hidden-xs">ALTERAR <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>
-                                <button data-nome="<?php echo $row['nome']; ?>" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">EXCLUIR <br></span>
+                                <button data-nome="" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
+                                    <span class="hidden-xs">DESATIVAR<br></span>
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>

@@ -1,5 +1,5 @@
 <?php
-include 'acesso_cliente.php';
+include 'acesso_com.php';
 include '../conn/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,16 +58,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include "menu_adm_cliente.php"; ?>
+    <?php include "menu_adm.php"; ?>
 
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <h2 class="breadcrumb alert-warning">Pedido de Reserva</h2>
-                <div class="thumbnail" style="padding: 7px;">
-                    <div class="alert alert-warning">
+            <h2 class="breadcrumb alert-warning">
+                        <a href="reserva_lista.php" style="text-decoration: none;">
+                            <button class="btn btn-warning" type="button">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                       Inserindo Reserva
+                    </h2>
                         <!-- Action vazia para postar para o próprio arquivo -->
-                        <form action="" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
+                        <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                             <!-- Campo CPF -->
                             <label for="cpf">CPF:</label>
                             <div class="input-group">
