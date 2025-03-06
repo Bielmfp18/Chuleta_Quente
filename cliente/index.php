@@ -17,7 +17,7 @@ include 'acesso_cliente.php';
 <body>
     <?php 
 
-    include 'reserva_insere.php';
+    include 'reserva_lista_cliente.php';
     ?>
 
 </body>

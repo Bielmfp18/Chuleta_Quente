@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
-                                <input type="password" name="senha" id="senha" maxlength="8" placeholder="Digite a senha desejada." class="form-control" required autocomplete="off">
+                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha desejada." class="form-control" required autocomplete="off">
                             </div><!-- fecha input-group -->
                             <br>
                             <!-- fecha input senha_usuario -->

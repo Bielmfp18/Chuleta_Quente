@@ -1,3 +1,4 @@
+
 <?php
 include '../admin/acesso_com.php';
 include '../conn/connect.php';
@@ -66,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
-    <?php include '../cliente/menu_adm_cliente.php'; ?>
     <main class="container4">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">

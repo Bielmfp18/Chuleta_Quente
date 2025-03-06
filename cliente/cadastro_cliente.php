@@ -1,7 +1,10 @@
 <?php
-
 include '../conn/connect.php';
+
+
 // $pdo->beginTransaction();
+
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -23,9 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $cpf = $_POST['cpf'];
+        $senha = $_POST['senha'];
 
         // Insere o cliente na tabela "cliente" usando o id do usuário
-        $clienteResult = $conn->query("INSERT INTO cliente VALUES (0, '$id_usuario', '$nome', '$email', '$cpf')");
+        $clienteResult = $conn->query("INSERT INTO cliente VALUES (0, '$id_usuario', '$nome', '$email', '$cpf', '$senha')");
 
         if ($clienteResult) {
             echo "<script>
@@ -49,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>Cliente - Insere</title>
     <meta charset="UTF-8">
@@ -57,13 +62,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/meu_estilo.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+
 </head>
-<body>
+
+
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <h2 class="breadcrumb text-success">
-                    <a href="../admin/cliente_lista.php" style = "text-decoration: none;">
+                    <a href="../index.php" style="text-decoration: none;">
                         <button class="btn btn-success" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
@@ -72,8 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-success">
-                        <form action="cadastro_cliente.php" method="POST" name="form_insere_usuario" id="form_insere_usuario">
-                            <label for="login">Nome de Usuário:</label>
+                        <form action="cadastro_cliente.php" method="POST" name="form_insere_cliente" id="form_insere_cliente">
+                        <label for="login">Nome de Usuário:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user text-success" aria-hidden="true"></span>
@@ -106,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-user text-success" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="nome" id="nome" maxlength="30" placeholder="Digite o nome do cliente." class="form-control" required autocomplete="off">
+                                <input type="text" name="nome" id="nome" maxlength="100" placeholder="Digite o nome do cliente." class="form-control" autocomplete="off" required >
                             </div>
                             <br>
                             <label for="email">Email:</label>
@@ -114,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-envelope text-success" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="email" id="email" class="form-control" required autocomplete="off" placeholder="Digite o email.">
+                                <input type="text" name="email" id="email" class="form-control" required autocomplete="on" placeholder="Digite o email.">
                             </div>
                             <br>
                             <label for="cpf">CPF:</label>
@@ -125,6 +133,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="text" name="cpf" id="cpf" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
                             </div>
                             <br>
+                                <!-- input senha_cliente -->
+                                <label for="senha">Senha:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fas fa-lock text-success" aria-hidden="true"></span>
+                                </span>
+                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" autocomplete="off" required>
+                            </div><!-- fecha input-group -->
+                            <br>
+                            <!-- fecha input senha_cliente -->
                                  <input type="submit" value="Cadastrar" role="button" name="enviar" id="enviar"  class="btn btn-block btn-success">
                         </form>
                     </div>
@@ -135,4 +153,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 </body>
+
 </html>
