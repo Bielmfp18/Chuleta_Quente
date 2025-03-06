@@ -136,7 +136,7 @@ CREATE TABLE `reserva` (
   `data` DATE NOT NULL,
   `horario` TIME NOT NULL,
   `num_pessoas` INT(2) NOT NULL,
-  `num_mesa` INT(2) NOT NULL,
+  `num_mesa` INT(2),
   `motivo` VARCHAR(70) NOT NULL,
   `ativo` BIT NOT NULL DEFAULT 1,
   -- Chaves estrangeiras
