@@ -7,6 +7,8 @@ $lista = $conn->query("SELECT * FROM reserva where ativo = 1 order by id "); //V
 $row = $lista->fetch_assoc();
 $numrow = $lista->num_rows;
 
+
+
 ?>
 <!-- html:5 -->
 <!DOCTYPE html>
@@ -63,7 +65,7 @@ $numrow = $lista->num_rows;
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
                             <td class = "hidden"><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
 
-                            <td><a href="reserva_atualiza.php?id=<?php echo $row['id']; ?>" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
+                            <td><a href="reserva_atualiza.php" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
                                     <span class="hidden-xs">ALTERAR <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>

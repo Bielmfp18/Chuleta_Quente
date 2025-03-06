@@ -58,9 +58,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<style>
+    .container4 {
+        justify-content: center;
+        height: 100%;
+    }
+</style>
 
 <body>
-    <main class="container">
+    <main class="container4">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <h2 class="breadcrumb alert-primary">
@@ -71,6 +77,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </a>
                     Pedido de Reserva
                 </h2>
+    </main>
+    <main class="container4">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title text-center">Regras para Pedido de Reserva</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>1.</strong> A reserva deve ser feita com no mínimo <strong>12 horas</strong> de antecedência.</p>
+                        <p><strong>2.</strong> A reserva deve ser feita com no máximo <strong>60 dias</strong> de antecedência.</p>
+                        <p><strong>3.</strong> Apenas um pedido de reserva por dia para o mesmo <strong>CPF</strong>.</p>
+                        <p><strong>4.</strong> É necessário preencher todos os campos de cadastro e reserva.</p>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <!-- Botão para direcionar para o formulário de pedido
+                        <a href="../cliente/pedido_reserva.php" class="btn btn-primary btn-lg">
+                            Aceito as Regras e Fazer o Pedido
+                        </a> -->
+
+    </main>
+
+    <main class="container4">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <!-- Action vazia para postar para o próprio arquivo -->
                 <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                     <div class="thumbnail">
@@ -158,11 +189,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <input type="submit" value="Fazer o Pedido" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block">
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </form>
             </div>
+        </div>
+        </div>
+        </div>
+        </form>
+        </div>
         </div>
     </main>
 
