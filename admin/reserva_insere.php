@@ -74,63 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </h2>
                         <!-- Action vazia para postar para o próprio arquivo -->
                         <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
-                        <!-- Campo nome -->
-                        <div class="thumbnail">
-                    <div class="alert alert-success">
-                            <label for="login">Nome Completo:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-user text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="nome" id="nome" autofocus maxlength="100" placeholder="Digite o nome completo" class="form-control" required autocomplete="on">
-                            </div>
-                            <br>
+              
                         
-                        <!-- Campo CPF -->
-                            <label for="cpf">CPF:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-edit text-info" aria-hidden="true"></span>
-                                </span>
-                                <input
-                                    type="text"
-                                    name="cpf"
-                                    id="cpf"
-                                    maxlength="14"
-                                    pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-                                    placeholder="000.000.000-00"
-                                    class="form-control"
-                                    required>
 
-                            </div>
-                            <br>
-                            <!-- Campo Email -->
-                            <label for="email">Email:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="email" id="email" maxlength="300" placeholder="Digite seu email." class="form-control" required autocomplete="off">
-                            </div>
-                            <br>
-                            <!-- Campo Data -->
-                            <label for="data">Data:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <input type="date" name="data" id="data" value="2025-03-05" class="form-control" required autocomplete="off">
-                            </div>
-                            <br>
-                            <!-- Campo Horário -->
-                            <label for="horario">Horário:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <input type="time" name="horario" id="horario" value="12:00" class="form-control" required autocomplete="off">
-                            </div>
-                            <br>
+                            
                             <!-- Número de Pessoas -->
                             <label for="num_pessoas">Número de Pessoas:</label>
                             <div class="input-group">
@@ -139,21 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </span>
                                 <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
                             </div>
-                            <br>
-                            <!-- Campo Motivo -->
-                            <label for="motivo">Motivo:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <textarea name="motivo" id="motivo" placeholder='Digite seu motivo (Ex: "Casamento", "Aniversário", etc.)' class="form-control" required autocomplete="off"></textarea>
-                            </div>
-                            <br>
-                            <!-- Campo Status oculto (1 = ativo) -->
-                            <input type="hidden" name="status" id="status" value="1">
-
-                            <!-- Botão Enviar -->
-                            <input type="submit" value="Inserir" role="button" name="enviar" id="enviar" class="btn btn-block btn-primary">
+                 
                         </form>
                     </div>
                 </div>

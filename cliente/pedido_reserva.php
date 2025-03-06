@@ -168,15 +168,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
 
 
-                           <!-- Número de Pessoas -->
-                              <label for="hidden">Número de Pessoas:</label>
-                            <div class="input-group">
+                           <!-- Número de Pessoas escondido -->
+                           
+                              <label class="hidden">Número de Pessoas:</label>
+                            <div class="hidden">
                                 <span class="input-group-addon">
-                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                    <i class="hidden" aria-hidden="true"></i>
                                 </span>
-                                <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
+                                <input class="hidden" type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
                             </div>
-                            <br>
+                            
+                        
                                 
 
 
