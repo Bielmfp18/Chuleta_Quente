@@ -1,7 +1,7 @@
 <?php
 
 include '../conn/connect.php';
-
+// $pdo->beginTransaction();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span class="input-group-addon">
                                     <span class="fas fa-user text-success" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="login" id="login" autofocus maxlength="30" placeholder="Digite o nome de usuário." class="form-control" required autocomplete="off">
+                                <input type="text" name="login" id="login" autofocus maxlength="100" placeholder="Digite o nome de usuário." class="form-control" required autocomplete="off">
                             </div>
                             <br>
                             <label for="senha">Senha:</label>
