@@ -138,7 +138,7 @@ CREATE TABLE `reserva` (
   `num_pessoas` INT(2) NOT NULL,
   `num_mesa` INT(2),
   `motivo` VARCHAR(70) NOT NULL,
-  `ativo` BIT NOT NULL DEFAULT 1,
+  `ativo` BIT NOT NULL DEFAULT 0,
   -- Chaves estrangeiras
     FOREIGN KEY (`cliente_nome`) REFERENCES `cliente`(`nome`),
   FOREIGN KEY (`cliente_cpf`) REFERENCES `cliente`(`cpf`),
