@@ -26,20 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "<script>
                 alert('Nova reserva inserida com sucesso!');
-                window.location.href='reserva_lista.php';
+                window.location.href='../index.php';
               </script>";
     } catch (mysqli_sql_exception $e) {
         // Se o erro for de duplicidade (código 1062), exibe a mensagem correspondente
         if ($e->getCode() == 1062) {
             echo "<script>
                     alert('Esta reserva já está cadastrada!');
-                    window.location.href='index.php';
+                    window.location.href='pedido_reserva_cliente.php';
                   </script>";
         } else {
             // Exibe o erro real para ajudar na depuração
             echo "<script>
                     alert('Erro ao tentar inserir a nova reserva. Erro: " . $e->getMessage() . "');
-                    window.location.href='index.php';
+                    window.location.href='pedido_reserva_cliente.php';
                   </script>";
         }
     }
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <!-- Action vazia para postar para o próprio arquivo -->
-                <form action="pedido_reserva.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
+                <form action="pedido_reserva_cliente.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                     <div class="thumbnail">
                         <div class="alert alert-success">
                             <!-- Campo Nome -->
