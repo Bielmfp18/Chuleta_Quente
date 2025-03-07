@@ -2,13 +2,34 @@
 include 'acesso_com.php';
 include "../conn/connect.php";
 
+//Pega os valores através da Super Global GET e não deixa espaços em branco com o método trim.
+$cpf = isset($_GET['cpf']) ? trim($_GET['cpf']) : '';
+$data = isset($_GET['data']) ? trim($_GET['data']) : '';
+$status = isset($_GET['status']) ? trim($_GET['status']) : ''; // Alterado para "status" para combinar com o form
 
-$lista = $conn->query("SELECT * FROM reserva where ativo = 1 order by id "); //Vai organizar as reservas começando pelo id.
+$sql = "SELECT * FROM reserva WHERE 1=1"; // Garante que os filtros funcionem corretamente
+
+$lista = $conn->query("SELECT * FROM reserva"); //Vai organizar as reservas.
 $row = $lista->fetch_assoc();
 $numrow = $lista->num_rows;
 
+if (!empty($cpf)) {
+    //trás a busca com uma "continuação" do sql em $lista.
+    $sql .= " AND cliente_cpf LIKE '%$cpf%'";
+}
 
+if (!empty($data)) {
+    $sql .= " AND data = '$data'";
+}
 
+if ($status !== '') {  // Alterado para permitir o valor "0"
+    $sql .= " AND ativo = '$status'";
+}
+
+// Executa a consulta após adicionar os filtros
+$lista = $conn->query($sql);
+$row = $lista->fetch_assoc();
+$numrow = $lista->num_rows;
 ?>
 <!-- html:5 -->
 <!DOCTYPE html>
@@ -29,8 +50,32 @@ $numrow = $lista->num_rows;
     <?php include "menu_adm.php"; ?>
     <main class="container">
         <h1 class="breadcrumb alert-primary">Lista de Reservas</h1>
+            <!-- FORMULÁRIO DO FILTRO -->
+            <div class="container text-center">
+            <form action="" method="GET" class="form-inline" style="margin-bottom: 20px;">
+  <div class="form-group">
+    <label for="cpf">CPF:</label>
+    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Digite o CPF para busca">
+  </div>
 
+  <div class="form-group" style="margin-left: 10px;">
+    <label for="data">DATA:</label>
+    <input type="date" name="data" id="data" class="form-control" placeholder="dd/mm/aaaa">
+  </div>
 
+  <div class="form-group" style="margin-left: 10px;">
+    <label for="status">STATUS:</label>
+    <select name="status" id="status" class="form-control" style="height: 34px;">
+    <option value="">TUDO</option>
+        <option value="1" <?php if($status === '1') echo 'selected'; ?>>ATIVAS</option>
+        <option value="0" <?php if($status === '0') echo 'selected'; ?>>DESATIVAS</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Filtrar</button>
+</form>
+<!-- FIM DO FORMULÁRIO DE FILTRO -->  
+</div>
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->
             <table class="table table-hover table-condensed tbopacidade text-center">
                 <thead>
@@ -42,7 +87,7 @@ $numrow = $lista->num_rows;
                         <th  class="text-center">DATA</th>
                         <th  class="text-center">HORÁRIO</th>
                         <th  class="text-center">MOTIVO</th>
-                        <th  class="hidden">STATUS</th>
+                        <th class="text-center">STATUS</th>
                         <th>
                         <a href="reserva_insere.php" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="hidden-xs">ADICIONAR <br></span>
@@ -62,18 +107,18 @@ $numrow = $lista->num_rows;
                             <td><?php echo isset($row['data']) ? $row['data'] : "Sem data"; ?></td>
                             <td><?php echo isset($row['horario']) ? $row['horario'] : "Sem horario"; ?></td>
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
-                            <td class = "hidden"><?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
+                            <td class="text-center">
+                                <?php echo (isset($row['ativo']) ? (($row['ativo'] == 1) ? "Ativo" : "Desativo") : "Sem status"); ?>
+                            </td>
 
                             <td>
-                           
-    
                             
                             <a href="reserva_atualiza.php" class="btn btn-block btn-warning btn-sm"> <!-- btn-block -->
                                     <span class="hidden-xs">ALTERAR <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>
                                 <button data-nome="" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger  btn-sm"> <!-- btn-block -->
-                                    <span class="hidden-xs">DESATIVAR<br></span>
+                                    <span class="hidden-xs">REJEITAR<br></span>
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>
@@ -97,7 +142,7 @@ $numrow = $lista->num_rows;
                     <h4 class="modal-title text-danger">ATENÇÃO!</h4>
                 </div><!-- fecha modal-header -->
                 <div class="modal-body">
-                    Deseja mesmo DESATIVAR está reserva?
+                    Deseja mesmo REJEITAR está reserva?
                     <h4><span class="nome text-danger"></span></h4>
                 </div><!-- fecha modal-body -->
                 <div class="modal-footer">

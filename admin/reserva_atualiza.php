@@ -60,7 +60,7 @@ if (isset($_GET['id'])) {
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <a href="tipos_lista.php" style="text-decoration: none;">
+                <a href="reserva_lista.php" style="text-decoration: none;">
                     <h2 class="breadcrumb alert-warning">
                         <a href="reserva_lista.php" style="text-decoration: none;">
                             <button class="btn btn-warning" type="button">
@@ -72,7 +72,8 @@ if (isset($_GET['id'])) {
                     <div class="thumbnail" style="padding: 7px;">
                         <div class="alert alert-warning">
                             <!-- Action vazia para postar para o próprio arquivo -->
-                            <form action="reserva_atualiza.php?id=<?php echo $_GET['id']; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_reserva" id="form_atualiza_reserva">
+                            <form action="reserva_atualiza.php?id=<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_reserva" id="form_atualiza_reserva">
+
                                 <label for="cpf">CPF:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -80,7 +81,7 @@ if (isset($_GET['id'])) {
                                     </span>
                                     <input
                                         type="text"
-                                        value="<?php echo isset($row['cliente_cpf']) ? $row['cliente_cpf'] : ''; ?>"
+                                        value="<?php echo isset($row['cpf']) ? $row['cpf'] : ''; ?>"
                                         name="cpf"
                                         id="cpf"
                                         maxlength="14"

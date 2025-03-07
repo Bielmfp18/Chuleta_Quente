@@ -1,5 +1,5 @@
 <?php
-include 'acesso_cliente.php';
+
 include '../conn/connect.php';
 //Inicia a verificação do login.
 if ($_POST) {
