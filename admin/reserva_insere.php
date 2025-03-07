@@ -131,15 +131,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="time" name="horario" id="horario" value="12:00" class="form-control" required autocomplete="off">
                             </div>
                             <br>
-                            <!-- Número de Pessoas -->
-                            <label for="num_pessoas">Número de Pessoas:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                </span>
-                                <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
-                            </div>
-                            <br>
+                                <!-- Número de Pessoas -->
+                                <label for="num_pessoas">Número de Pessoas:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="number" name="num_pessoas" id="num_pessoas" value="1" min="1" max="99" class="form-control" required>
+                                </div>
+                                <br>
                             <!-- Campo Motivo -->
                             <label for="motivo">Motivo:</label>
                             <div class="input-group">
