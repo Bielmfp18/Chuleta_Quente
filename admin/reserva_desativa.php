@@ -8,7 +8,7 @@ $result = $conn->query("UPDATE reserva SET ativo = 0 WHERE id = $id");
 
 if ($result) {
     echo "<script>
-            alert('Reserva desativada com sucesso!');
+            alert('Reserva rejeitada com sucesso!');
             window.location.href='reserva_lista.php';
           </script>";
 } else {

@@ -111,6 +111,7 @@ $numrow = $lista->num_rows;
                             <td><?php echo isset($row['data']) ? $row['data'] : "Sem data"; ?></td>
                             <td><?php echo isset($row['horario']) ? $row['horario'] : "Sem horario"; ?></td>
                             <td><?php echo isset($row['num_pessoas']) ? $row['num_pessoas'] : "Sem um número de pessoas"; ?></td>
+                            <td><?php echo isset($row['num_mesa']) ? $row['num_mesa'] : "Sem um número da mesa"; ?></td>
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
                             <td class="text-center">
                                 <?php echo (isset($row['ativo']) ? (($row['ativo'] == 1) ? "Ativo" : "Desativo") : "Sem status"); ?>
@@ -118,7 +119,7 @@ $numrow = $lista->num_rows;
 
                             <td>
                      
-                            <a href="reserva_aceita.php" target="_self" class="btn btn-block btn-success btn-xs" role="button">
+                            <a href="reserva_aceita.php?id=<?php echo $row['id']; ?>" target="_self" class="btn btn-block btn-success btn-xs" role="button">
                                 <span class="hidden-xs">ACEITAR <br></span>
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             </a>
