@@ -34,7 +34,7 @@ $numrow = $lista->num_rows;
 <body>
     <?php include "menu_adm_cliente.php"; ?>
     <main class="container">
-        <h1 class="breadcrumb alert-primary">Lista de Reservas</h1>
+        <h1 class="breadcrumb alert-primary">Minhas Reservas</h1>
 
         <div class="table-responsive container-centralizado">
             <table class="table table-hover table-condensed tbopacidade text-center">
@@ -52,7 +52,7 @@ $numrow = $lista->num_rows;
                         <th>
                         <th>
                             <a href="reserva_insere.php" target="_self" class="btn btn-primary btn-block btn-xs" role="button">
-                                <span class="hidden-xs">ADICIONAR RESERVA <br></span>
+                                <span class="hidden-xs">FAZER MAIS UMA RESERVA <br></span>
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>
                         </th>

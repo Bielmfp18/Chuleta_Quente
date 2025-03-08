@@ -183,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <!-- Botão de Cancelar -->
-                                    <a href="../admin/reserva_desativa.php" class="btn btn-danger btn-block">Cancelar</a>
+                                    <a href="../index.php" class="btn btn-danger btn-block">Cancelar</a>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <!-- Botão de Fazer o Pedido -->

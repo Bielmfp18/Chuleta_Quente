@@ -4,7 +4,8 @@ include "../conn/connect.php";
 
 // Atualiza o status para "expirado" (num 2) para reservas cuja data seja anterior à data atual.
 $hoje = date('Y-m-d');
-$conn->query("UPDATE reserva SET ativo = 2 WHERE data < '$hoje'");
+$conn->query("UPDATE reserva SET ativo = 2 WHERE data < '$hoje' AND ativo = 1");
+
 
 // Pega os valores através da Super Global GET e remove espaços em branco.
 $cpf = isset($_GET['cpf']) ? trim($_GET['cpf']) : '';
@@ -75,12 +76,12 @@ $numrow = $lista->num_rows;
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-success" style="margin-left: 10px;">Filtrar</button>
+                <button type="submit" class="btn btn-info" style="margin-left: 10px;">Filtrar</button>
             </form>
             <!-- FIM DO FORMULÁRIO DE FILTRO -->
         </div>
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->
-            <table class="table table-hover table-condensed tbopacidade text-center">
+        <table class="table table-hover  tbopacidade text-center">
                 <thead>
                     <tr>
                         <th class="hidden">ID</th>

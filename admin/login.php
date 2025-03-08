@@ -20,9 +20,16 @@ if ($_POST) {
         $_SESSION['nivel_usuario'] = $rowLogin['nivel'];
         $_SESSION['nome_da_sessao'] = session_name();
         if ($rowLogin['nivel'] == 'sup') {
-            echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
+            echo "<script>
+            var login = '" . $login . "';
+            alert('Seja bem-vindo ' + login + '!');
+            window.location.href = 'index.php';
+        </script>";
         } else {
-            echo "<script>window.open('../cliente/index.php?cliente=" . $login . "','_self')</script>"; //self carrega a páguna na mesma aba.
+            echo "<script>
+        alert('Erro ao tentar logar. Faça o login novamente.');
+        window.location.href = 'login.php';
+    </script>";
         }
     }
 }
