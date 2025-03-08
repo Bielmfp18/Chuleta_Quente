@@ -1,13 +1,14 @@
 <?php
 
 include '../conn/connect.php';
+
 //Inicia a verificação do login.
 if ($_POST) {
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
     $senha = $_POST['senha'];
     // echo base64_encode();
-    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = '$senha'");
+    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = md5('$senha')");
     $rowLogin = $loginresult->fetch_assoc();
     // var_dump($rowLogin);
     // die();

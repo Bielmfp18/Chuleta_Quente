@@ -15,16 +15,15 @@ if ($_POST) {
         $session_name_new = session_name();
         session_start();
     }
-    if($numRow > 0){
-$_SESSION['login_usuario'] = $login;
-$_SESSION['nivel_usuario'] = $rowLogin['nivel'];
-$_SESSION['nome_da_sessao'] = session_name();
-if($rowLogin['nivel'] == 'sup'){
- echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
-}else{
-    echo"<script>window.open('../cliente/index.php?cliente=".$login."','_self')</script>"; //self carrega a páguna na mesma aba.
-}
-
+    if ($numRow > 0) {
+        $_SESSION['login_usuario'] = $login;
+        $_SESSION['nivel_usuario'] = $rowLogin['nivel'];
+        $_SESSION['nome_da_sessao'] = session_name();
+        if ($rowLogin['nivel'] == 'sup') {
+            echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
+        } else {
+            echo "<script>window.open('../cliente/index.php?cliente=" . $login . "','_self')</script>"; //self carrega a páguna na mesma aba.
+        }
     }
 }
 
@@ -36,7 +35,7 @@ if($rowLogin['nivel'] == 'sup'){
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="30;URL=../index.php">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/2495680ceb.js" crossorigin="anonymous"></script>
     <!-- Link para CSS específico -->
     <link rel="stylesheet" href="../css/estilo.css" type="text/css">

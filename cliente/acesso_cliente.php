@@ -14,9 +14,13 @@ if (!isset($_SESSION['login_cliente'])) {
     header('location: login_cliente.php'); //Redirecionamento
     exit;
 }
+
 //Se houver uma ação de invasão por acesso não permitido à página pós-login, ele irá destruir a session.
 $nome_da_sessao = session_name();
-if (!isset($_SESSION['nome_da_sessao']) or ($_SESSION['nome_da_sessao'] != $nome_da_sessao)) {
+if (!isset($_SESSION['nome_da_sessao']) || $_SESSION['nome_da_sessao'] !== $nome_da_sessao) {
     session_destroy();
+    session_unset(); // Remove todas as variáveis da sessão
     header('location: login_cliente.php');
+    exit;
 }
+?>
