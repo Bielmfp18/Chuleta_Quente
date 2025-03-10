@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="number" name="num_mesa" id="num_mesa" value="1" min="1" max="99" class="form-control" style="width: 100px; " required>
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <form action="reserva_aceita.php?id=<?php echo $row['id']; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_reserva">
-                                <!-- Botão de Confirmar Reserva -->
+                                    <!-- Botão de Confirmar Reserva -->
                                     <input type="submit" value="Confirmar Reserva" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block" style="height: 33px;">
                                 </form>
                             </div>
