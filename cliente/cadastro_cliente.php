@@ -62,96 +62,96 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/meu_estilo.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 
 
-    <main class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-                <h2 class="breadcrumb text-success">
-                    <a href="../index.php" style="text-decoration: none;">
-                        <button class="btn btn-success" type="button">
-                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
-                        </button>
-                    </a>
-                    Cadastro de Cliente
-                </h2>
-                <div class="thumbnail">
-                    <div class="alert alert-success">
-                        <form action="cadastro_cliente.php" method="POST" name="form_insere_cliente" id="form_insere_cliente">
+<main class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+            <h2 class="breadcrumb text-info">
+                <a href="../index.php" style="text-decoration: none;">
+                    <button class="btn btn-info" type="button">
+                        <span class="fas fa-chevron-left" aria-hidden="true"></span>
+                    </button>
+                </a>
+                Cadastro de Cliente
+            </h2>
+            <div class="thumbnail">
+                <div class="alert alert-info">
+                    <form action="cadastro_cliente.php" method="POST" name="form_insere_cliente" id="form_insere_cliente">
                         <label for="login">Nome de Usuário:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-user text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="login" id="login" autofocus maxlength="100" placeholder="Digite o nome de usuário." class="form-control" required autocomplete="off">
-                            </div>
-                            <br>
-                            <label for="senha">Senha:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-lock text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" required autocomplete="off">
-                            </div>
-<br>
-                             <!-- radio nivel_usuario -->
-                             <label for="nivel">Nível do usuário</label>
-                            <div class="input-group">
-                                <label for="nivel_c" class="radio-inline">
-                                    <input type="radio" name="nivel" id="nivel" value="com" checked>Comum
-                                </label>
-                            </div><!-- fecha input-group -->
-                            <br>
-                            <!-- Fecha radio nivel_usuario -->
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" name="login" id="login" autofocus maxlength="100" placeholder="Digite o nome de usuário." class="form-control" required autocomplete="off">
+                        </div>
+                        <br>
+                        <label for="senha">Senha:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-lock text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" required autocomplete="off">
+                        </div>
+
+                        <!-- radio nivel_usuario -->
+                        <label class="hidden" for="nivel">Nível do usuário</label>
+                        <div class="hidden">
+                            <label for="nivel_c" class="radio-inline">
+                                <input class="hidden" type="radio" name="nivel" id="nivel" value="com" checked>Comum
+                            </label>
+                        </div><!-- fecha input-group -->
+                        <br>
+                        <!-- Fecha radio nivel_usuario -->
 
 
-                          
-                            <label for="nome">Nome:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-user text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="nome" id="nome" maxlength="100" placeholder="Digite o nome do cliente." class="form-control" autocomplete="off" required >
-                            </div>
-                            <br>
-                            <label for="email">Email:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-envelope text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="email" id="email" class="form-control" required autocomplete="on" placeholder="Digite o email.">
-                            </div>
-                            <br>
-                            <label for="cpf">CPF:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-id-card text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="cpf" id="cpf" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
-                            </div>
-                            <br>
-                                <!-- input senha_cliente -->
-                                <label for="senha">Senha:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-lock text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" autocomplete="off" required>
-                            </div><!-- fecha input-group -->
-                            <br>
-                            <!-- fecha input senha_cliente -->
-                                 <input type="submit" value="Cadastrar" role="button" name="enviar" id="enviar"  class="btn btn-block btn-success">
-                        </form>
-                    </div>
+
+                        <label for="nome">Nome:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-user text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" name="nome" id="nome" maxlength="100" placeholder="Digite o nome do cliente." class="form-control" autocomplete="off" required>
+                        </div>
+                        <br>
+                        <label for="email">Email:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-envelope text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" name="email" id="email" class="form-control" required autocomplete="on" placeholder="Digite o email.">
+                        </div>
+                        <br>
+                        <label for="cpf">CPF:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-id-card text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="text" name="cpf" id="cpf" class="form-control" required autocomplete="on" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+                        </div>
+                        <br>
+                        <!-- input senha_cliente -->
+                        <label for="senha">Senha:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="fas fa-lock text-info" aria-hidden="true"></span>
+                            </span>
+                            <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" autocomplete="off" required>
+                        </div><!-- fecha input-group -->
+                        <br>
+                        <!-- fecha input senha_cliente -->
+                        <input type="submit" value="Cadastrar" role="button" name="enviar" id="enviar" class="btn btn-block btn-info">
+                    </form>
                 </div>
             </div>
         </div>
-    </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    </div>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -58,13 +58,20 @@ if ($_POST) {
     <main class="container">
         <section>
             <article>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                        <h1 class="breadcrumb text-info text-center">Faça seu login</h1>
-                        <div class="thumbnail">
-                            <p class="text-info text-center" role="alert">
-                                <i class="fas fa-users fa-10x"></i>
-                            </p>
+                  <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <h1 class="breadcrumb alert-primary">
+                    <a href="../index.php" style="text-decoration: none;">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                    </a>
+                    Faça seu login
+                    </h1>
+                    <div class="panel-body">
+                        <p><strong>*</strong> Para acessar a lista de reservas, você precisará estar logado.  </p>
+                    </div>
+                    <div class="panel-footer ">
                             <br>
                             <div class="alert alert-info" role="alert">
                                 <form action="login_cliente.php" name="form_email" id="form_email" method="POST" enctype="multipart/form-data">
