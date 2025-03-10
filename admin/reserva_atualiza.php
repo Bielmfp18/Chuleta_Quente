@@ -65,9 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <a href="reserva_lista.php" style="text-decoration: none;">
-                    <h2 class="breadcrumb alert-warning">
+                    <h2 class="breadcrumb alert-primary">
                         <a href="reserva_lista.php" style="text-decoration: none;">
-                            <button class="btn btn-warning" type="button">
+                            <button class="btn btn-primary" type="button">
                                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             </button>
                         </a>
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <!-- Campo nome -->
                         <div class="thumbnail">
-                            <div class="alert alert-success">
+                            <div class="alert alert-primary">
                                 <label for="nome">Nome Completo:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -156,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <!-- Campo Status oculto (1 = ativo) -->
                                 <input type="hidden" name="status" id="status" value="1">
                                 <!-- Botão Enviar -->
-                                <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-warning">
+                                <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-primary">
                     </form>
             </div>
         </div>

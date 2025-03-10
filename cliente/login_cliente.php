@@ -1,13 +1,14 @@
 <?php
 
 include '../conn/connect.php';
+
 //Inicia a verificação do login.
 if ($_POST) {
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
     $senha = $_POST['senha'];
     // echo base64_encode();
-    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = '$senha'");
+    $loginresult = $conn->query("SELECT * FROM cliente WHERE email = '$email' AND  cpf = '$cpf' AND senha = md5('$senha')");
     $rowLogin = $loginresult->fetch_assoc();
     // var_dump($rowLogin);
     // die();
@@ -19,10 +20,18 @@ if ($_POST) {
     }
     if ($numRow > 0) {
         $_SESSION['login_cliente'] = $rowLogin['email'];
-        $_SESSION['cpf_cliente'] = $rowLogin['cpf'];
+        $_SESSION['cpf'] = $rowLogin['cpf'];
+        $_SESSION['senha'] = $rowLogin['senha'];
         $_SESSION['nome_da_sessao'] = session_name();
         if ($rowLogin['email'] == $email &&  $rowLogin['cpf'] == $cpf && $rowLogin['senha']){
-            echo "<script>window.open('index.php', '_self')</script>"; // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
+       
+            echo "<script>
+                var email = '" . $email . "';
+                alert('Seja bem-vindo ' + email + '!');
+                window.location.href = '../cliente/reserva_lista_cliente.php?email=' + email;
+            </script>";
+         
+             // echo "<script>window.open('index.php', '_blank')</script>"; abre a janela diministrativa em uma outra aba.
         } else {
             echo "<script>window.open('index.php?cliente=" . $email . "','_self')</script>"; //self carrega a página na mesma aba.
         }

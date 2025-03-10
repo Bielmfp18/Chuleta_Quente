@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
+    $senha = $_POST['senha'];
 
     $id_usuario = $_GET['id']; 
     $login = $_POST['login'];
@@ -27,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nivel_usuario = $_POST['nivel'];
 
     $loginresult = $conn->query("UPDATE usuarios SET login = '$login', senha = md5('$senha'), nivel = '$nivel_usuario' WHERE id = $id_usuario");
-    $clienteResult = $conn->query("UPDATE cliente SET usuario_id = '$id_usuario', nome = '$nome', email = '$email', cpf ='$cpf' WHERE id = $id");
+    $clienteResult = $conn->query("UPDATE cliente SET usuario_id = '$id_usuario', nome = '$nome', email = '$email', cpf ='$cpf', senha = md5('$senha') WHERE id = $id");
 
     if ($clienteResult) {
         echo "<script>
@@ -122,6 +123,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </span>
                                 <input type="text" name="cpf" id="cpf" value="<?php echo $cliente['cpf']; ?>" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
                             </div>
+                            <br>
+                                 <!-- input senha_cliente -->
+                                 <label for="senha">Senha:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="fas fa-lock text-success" aria-hidden="true"></span>
+                                </span>
+                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" autocomplete="off" required>
+                            </div><!-- fecha input-group -->
                             <br>
 
                             <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-success">
