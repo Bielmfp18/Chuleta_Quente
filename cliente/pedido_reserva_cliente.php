@@ -1,9 +1,8 @@
 
 <?php
-<<<<<<< HEAD
-=======
+
 // include '../admin/acesso_com.php';
->>>>>>> 7c4974842c763ca7e44fdb85f679efa6962b96fb
+
 include '../conn/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
