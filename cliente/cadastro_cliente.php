@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $senha = $_POST['senha'];
 
         // Insere o cliente na tabela "cliente" usando o id do usuário
-        $clienteResult = $conn->query("INSERT INTO cliente VALUES (0, '$id_usuario', '$nome', '$email', '$cpf', '$senha')");
+        $clienteResult = $conn->query("INSERT INTO cliente VALUES (0, '$id_usuario', '$nome', '$email', '$cpf', md5('$senha'))");
 
         if ($clienteResult) {
             echo "<script>

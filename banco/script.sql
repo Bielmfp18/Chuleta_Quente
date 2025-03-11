@@ -127,6 +127,21 @@ CREATE TABLE `cliente` (
   KEY (`cpf`)       -- redundante, mas ajuda em performance
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE IF NOT EXISTS cliente (
+    id INT INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    cpf char(14) NOT NULL UNIQUE,
+    senha VARCHAR(80) NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+
+);
+
+
+
+
 -- Cria a tabela reserva
 CREATE TABLE `reserva` (
   `id` INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
