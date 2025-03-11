@@ -1,5 +1,9 @@
 
 <?php
+<<<<<<< HEAD
+=======
+// include '../admin/acesso_com.php';
+>>>>>>> 7c4974842c763ca7e44fdb85f679efa6962b96fb
 include '../conn/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -78,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Pedido de Reserva
                 </h2>
     </main>
+    
     <main class="container4">
         <div class="row">   
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -105,12 +110,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- Action vazia para postar para o próprio arquivo -->
                 <form action="pedido_reserva_cliente.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                     <div class="thumbnail">
-                        <div class="alert alert-success">
+                        <div class="alert alert-info">
                             <!-- Campo Nome -->
                             <label for="nome">Nome Completo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="fas fa-user text-success" aria-hidden="true"></i>
+                                    <i class="fas fa-user text-info" aria-hidden="true"></i>
                                 </span>
                                 <input type="text" name="nome" id="nome" autofocus maxlength="100" placeholder="Digite o nome completo" class="form-control" required autocomplete="on">
                             </div>
