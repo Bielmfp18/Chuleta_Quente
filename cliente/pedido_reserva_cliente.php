@@ -2,7 +2,7 @@
 <?php
 
 // include '../admin/acesso_com.php';
-
+include '../cliente/acesso_cliente.php';
 include '../conn/connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,14 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         echo "<script>
-                alert('Nova reserva inserida com sucesso!');
+                alert('Pedido de reserva realizado com sucesso!');
                 window.location.href='../index.php';
               </script>";
     } catch (mysqli_sql_exception $e) {
         // Se o erro for de duplicidade (código 1062), exibe a mensagem correspondente
         if ($e->getCode() == 1062) {
             echo "<script>
-                    alert('Esta reserva já está cadastrada!');
+                    alert('Este pedido de reserva já está cadastrado!');
                     window.location.href='pedido_reserva_cliente.php';
                   </script>";
         } else {
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <h2 class="breadcrumb alert-primary">
-                    <a href="reserva_lista_cliente.php" style="text-decoration: none;">
+                    <a href="../index.php" style="text-decoration: none;">
                         <button class="btn btn-primary" type="button">
                             <i class="fas fa-chevron-left" aria-hidden="true"></i>
                         </button>
@@ -181,8 +181,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <br>
 
                             <!-- Campo Status oculto (1 = ativo) -->
-                            <input type="hidden" name="status" id="status" value="1">
-
+                            <input type="hidden" name="status" id="status" value="0">
+<br><br>
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <!-- Botão de Cancelar -->
@@ -192,6 +192,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <!-- Botão de Fazer o Pedido -->
                                     <input type="submit" value="Fazer o Pedido" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block">
                                 </div>
+                                <br><br><br><br>
+                                <p class="text-center">
+                                     <small>
+                                         <br>
+                                        Para obter acesso a lista de seus pedidos de reserva é necessário logar em sua conta. <br> Gostaria de realizar seu login? <a href="login_cliente.php">Clique Aqui</a>
+                                     </small>
+                                 </p>
                             </div>
                         </div>
                     </div>

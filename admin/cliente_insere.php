@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                           
-                            <label for="nome">Nome:</label>
+                            <label for="nome">Nome Completo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user text-success" aria-hidden="true"></span>

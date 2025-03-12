@@ -1,24 +1,21 @@
 <?php
-include 'acesso_cliente.php';
+include '../cliente/acesso_cliente.php';
 include "../conn/connect.php";
 
-// Garante que a sessão esteja iniciada para realizar o "resgate" do cpf do cliente.
-if (!isset($_SESSION)) {
-    session_start();
-}
-
-// Pega o CPF do cliente no login.
-$clientecpf = isset($_SESSION['cpf_cliente']) ? $_SESSION['cpf_cliente'] : '';
+// Garante que a sessão esteja iniciada e utiliza o CPF definido na sessão.
+$clientecpf = isset($_SESSION['cpf']) ? $_SESSION['cpf'] : '';
 
 if (empty($clientecpf)) {
     echo "<p class='alert alert-danger'>CPF não encontrado. Faça login novamente.</p>";
     exit;
 }
 
+// Para exibir apenas as reservas que possuem o CPF do cliente,
+// utilize a condição de igualdade no SQL.
 $lista = $conn->query("SELECT * FROM reserva WHERE cliente_cpf LIKE '%$clientecpf%'");
 $numrow = $lista->num_rows;
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

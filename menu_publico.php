@@ -113,6 +113,8 @@ $rows_tipos = $lista_tipos->fetch_all(); //fetch_all entrega uma matrix associat
                         <li><a href="admin/index.php">Login (ADM)</a></li>
                         <li><a href="../modelophp/cliente/login_cliente.php">Login (Cliente)</a></li>
                         <li><a href="../modelophp/cliente/cadastro_cliente.php">Cadastro</a></li>
+
+
                     </ul>
                 </li>
 

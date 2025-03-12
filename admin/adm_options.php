@@ -1,7 +1,3 @@
-<?php 
-
-
-?>
 
 <main class="container">
 <h1 class="breadcrumb">Área Administrativa</h1>

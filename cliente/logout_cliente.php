@@ -1,13 +1,13 @@
 <?php 
-//Inicia uma sessão.
 session_start();
-//Unset, recebe a super global $_SESSION com o valor do usuário que deseja logar e destrói a sessão.
-unset($_SESSION['login_usuario']);
+// Remove a variável de sessão correta
+unset($_SESSION['login_cliente']);
 
-//Exibe a mensagem de desconexão após o logout e redireciona a página de login.
+// Opcional: destrói toda a sessão para garantir que nada fique salvo
+session_destroy();
+
 echo "<script>
-            alert('Você se desconectou da sua conta!');
-            window.location.href='../index.php';
-        </script>";
+        alert('Você se desconectou da sua conta!');
+        window.location.href='../index.php';
+      </script>";
 ?>
-

@@ -1,4 +1,4 @@
-<?php include 'acesso_cliente.php';?>
+<?php include '../cliente/acesso_cliente.php';?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
 <nav class="nav navbar-inverse">

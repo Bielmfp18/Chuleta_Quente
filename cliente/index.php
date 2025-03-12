@@ -1,5 +1,5 @@
 <?php 
-include 'acesso_cliente.php';
+include '../cliente/acesso_cliente.php';
 ?>
 
 <!DOCTYPE html>

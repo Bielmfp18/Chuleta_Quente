@@ -1,6 +1,8 @@
 <?php
-include '../admin/acesso_com.php';
+
+include '../cliente/acesso_cliente.php';
 include '../conn/connect.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera os dados enviados pelo formulário

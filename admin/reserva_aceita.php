@@ -2,8 +2,9 @@
 include '../admin/acesso_com.php';
 include '../conn/connect.php';
 
+// Valida o ID enviado por GET
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = intval($_GET['id']);
     $sql_row = $conn->query("SELECT * FROM reserva WHERE id = $id");
     if ($sql_row && $sql_row->num_rows > 0) {
         $row = $sql_row->fetch_assoc();
@@ -14,12 +15,13 @@ if (isset($_GET['id'])) {
     die("ID inválido.");
 }
 
+// Processa o formulário via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera os dados enviados pelo formulário
-    $id = $_GET['id'];
-    $num_mesa = $_POST['num_mesa'];
+    $id = intval($_GET['id']);
+    $num_mesa = intval($_POST['num_mesa']);
 
-    // Monta a query especificando os campos
+    // Atualiza a reserva (define o número da mesa e ativa a reserva)
     $sql = $conn->query("UPDATE reserva SET num_mesa = $num_mesa, ativo = 1 WHERE id = $id");
 
     if ($sql) {
@@ -35,11 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Área de Cliente - Chuleta Quente</title>
@@ -50,22 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/estilo.css" type="text/css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .container4 {
+            height: 100%;
+            padding-top: 130px;
+        }
+    </style>
 </head>
-<style>
-    .container4 {
-        height: 100%;
-        padding-top: 130px;
-    }
-</style>
-
-<?php include '../admin/menu_adm.php'; ?>
-
 <body>
+    <?php include '../admin/menu_adm.php'; ?>
     <main class="container4">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <div class="panel panel-info">
-                    <div class="panel-heading" style="width:548px;">
+                    <div class="panel-heading" style="text-align: center;">
                         <h2 class="breadcrumb alert-secondary">
                             <a href="reserva_lista.php" style="text-decoration: none;">
                                 <button class="btn btn-primary" type="button" style="margin-right: 10px;">
@@ -76,49 +73,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </h2>
                     </div>
                     <div class="panel-body" style="text-align:center; font-size:20px;">
-                        <p>Adicione um número de mesa a está reserva para confirma-lá.</p>
+                        <p>Adicione um número de mesa para confirmar esta reserva.</p>
                     </div>
                     <div class="panel-footer text-center">
-<<<<<<< HEAD
-                        <!-- Botão para direcionar para o formulário de pedido
-                            <a href="../cliente/pedido_reserva.php" class="btn btn-primary btn-lg">
-                                Aceito as Regras e Fazer o Pedido
-                            </a> -->
-
-                        <!-- Número de Pessoas -->
-                        <label for="num_mesa" style="text-align:center; font-size:20px;">Número da Mesa:</label>
-                        <div class="input-group" style="margin-left:192px; margin-top:10px;">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                            </span>
-                            <input type="number" name="num_mesa" id="num_mesa" value="1" min="1" max="99" class="form-control" style="width: 100px; " required>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <form action="reserva_aceita.php?id=<?php echo $row['id']; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_reserva">
-                                    <!-- Botão de Confirmar Reserva -->
-                                    <input type="submit" value="Confirmar Reserva" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block" style="height: 33px;">
-                                </form>
-=======
-                        <!-- Início do formulário -->
                         <form action="reserva_aceita.php?id=<?php echo $row['id']; ?>" method="POST" enctype="multipart/form-data" name="form_atualiza_reserva">
-                            <label for="num_mesa" style="text-align:center; font-size:20px; margin:10px;">Número da Mesa:</label>
-                            <div class="input-group" style="margin:10px auto; width:150px;">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-                                </span>
-                                <input type="number" name="num_mesa" id="num_mesa" value="1" min="1" max="99" class="form-control" required>
->>>>>>> d225ecb7148f5d9e80b2d520608f5827aa691d9e
+                            <div class="form-group">
+                                <label for="num_mesa" style="font-size:20px;">Número da Mesa:</label>
+                                <div class="input-group" style="width:150px; margin:10px auto;">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                    </span>
+                                    <input type="number" name="num_mesa" id="num_mesa" value="1" min="1" max="99" class="form-control" required>
+                                </div>
                             </div>
-                            <div style="margin-top:30px;">
-                                <!-- Botão de Confirmar Reserva -->
+                            <div class="form-group" style="margin-top:30px;">
                                 <input type="submit" value="Confirmar Reserva" role="button" name="enviar" id="enviar" class="btn btn-primary btn-block" style="height: 33px;">
                             </div>
                         </form>
-                        <!-- Fim do formulário -->
-                        <br>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <!-- Bootstrap js -->
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
