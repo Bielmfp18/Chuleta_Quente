@@ -108,12 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- Action vazia para postar para o próprio arquivo -->
                 <form action="pedido_reserva.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                     <div class="thumbnail">
-                        <div class="alert alert-success">
+                        <div class="alert alert-primary">
                             <!-- Campo Nome -->
                             <label for="nome">Nome Completo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="fas fa-user text-success" aria-hidden="true"></i>
+                                    <i class="fas fa-user text-primary" aria-hidden="true"></i>
                                 </span>
                                 <input type="text" name="nome" id="nome" autofocus maxlength="100" placeholder="Digite o nome completo" class="form-control" required autocomplete="on">
                             </div>

@@ -76,11 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form action="reserva_insere.php" name="form_insere_reserva" id="form_insere_reserva" method="POST" enctype="multipart/form-data">
                         <!-- Campo nome -->
                         <div class="thumbnail">
-                    <div class="alert alert-success">
+                    <div class="alert alert-primary">
                             <label for="login">Nome Completo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="fas fa-user text-success" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-user text-primary" aria-hidden="true"></span>
                                 </span>
                                 <input type="text" name="nome" id="nome" autofocus maxlength="100" placeholder="Digite o nome completo" class="form-control" required autocomplete="on">
                             </div>

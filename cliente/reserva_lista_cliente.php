@@ -48,7 +48,7 @@ $numrow = $lista->num_rows;
                         <th class="hidden">STATUS</th>
                         <th>
                         <th>
-                            <a href="reserva_insere.php" target="_self" class="btn btn-primary btn-block btn-xs" role="button">
+                            <a href="../cliente/pedido_reserva.php" target="_self" class="btn btn-primary btn-block btn-xs" role="button">
                                 <span class="hidden-xs">FAZER MAIS UMA RESERVA <br></span>
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>
@@ -56,7 +56,8 @@ $numrow = $lista->num_rows;
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = $lista->fetch_assoc()) { ?>
+               <!-- estrutura de repetição -->
+               <?php do { ?>
                         <tr>
                             <td class="hidden"> <?php echo $row['id']; ?></td>
                             <td> <?php echo isset($row['cliente_nome']) ? $row['cliente_nome'] : "Sem nome"; ?></td>
@@ -68,7 +69,7 @@ $numrow = $lista->num_rows;
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
                             <td class="hidden"> <?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
                         </tr>
-                    <?php } ?>
+                    <?php }  while ($row = $lista->fetch_assoc()); ?>
                 </tbody>
             </table>
         </div>
