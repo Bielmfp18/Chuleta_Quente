@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                 </button>
                             </a>
-                            Regras para Pedido de Reserva
+                            Regras para confirmar o Pedido de Reserva
                         </h2>
                     </div>
                     <div class="panel-body" style="text-align:center; font-size:20px;">

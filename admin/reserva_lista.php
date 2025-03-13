@@ -81,7 +81,7 @@ $numrow = $lista->num_rows;
             <!-- FIM DO FORMULÁRIO DE FILTRO -->
         </div>
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->
-        <table class="table table-hover  tbopacidade text-center">
+            <table class="table table-hover  tbopacidade text-center">
                 <thead>
                     <tr>
                         <th class="hidden">ID</th>
@@ -127,10 +127,10 @@ $numrow = $lista->num_rows;
                                     <span class="hidden-xs">ALTERAR <br></span>
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                                 </a>
-                                <button data-nome="" data-id="<?php echo $row['id']; ?>" class="delete btn btn-block btn-danger btn-sm">
+                                <a href="reserva_rejeita.php?id=<?php echo $row['id']; ?>" target="_self" class="btn btn-block btn-danger btn-xs" role="button">
                                     <span class="hidden-xs">REJEITAR<br></span>
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     <?php } while ($row = $lista->fetch_assoc()); ?>
@@ -174,8 +174,8 @@ $numrow = $lista->num_rows;
     <script type="text/javascript">
         $('.delete').on('click', function() {
             var nome = $(this).data('nome'); // valor do atributo data-nome
-            var id = $(this).data('id');     // valor do atributo data-id
-            $('span.nome').text(nome);         // insere o nome no modal
+            var id = $(this).data('id'); // valor do atributo data-id
+            $('span.nome').text(nome); // insere o nome no modal
             $('a.delete-yes').attr('href', 'reserva_desativa.php?id=' + id);
             $('#myModal').modal('show');
         });
