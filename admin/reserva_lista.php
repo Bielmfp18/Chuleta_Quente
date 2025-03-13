@@ -2,7 +2,7 @@
 include 'acesso_com.php';
 include "../conn/connect.php";
 
-// Atualiza o status para "expirado" (num 2) para reservas cuja data seja anterior à data atual.
+// Atualiza o status para "expirado" (num 2) para reservas aonde a data seja anterior à data atual.
 $hoje = date('Y-m-d');
 $conn->query("UPDATE reserva SET ativo = 2 WHERE data < '$hoje' AND ativo = 1");
 

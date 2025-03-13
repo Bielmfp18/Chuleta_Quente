@@ -185,8 +185,7 @@ MODIFY
 ALTER TABLE
   `produtos`
 ADD
-  CONSTRAINT `tipo_id_fk` FOREIGN KEY (`tipo_id`) REFERENCES `tipos`(`id`) ON DELETE no action ON UPDATE no action;
-
+  CONSTRAINT `tipo_id_fk` FOREIGN KEY (`tipo_id`) REFERENCES `tipos`(`id`);
 -- Criando a view vw_produtos
 CREATE VIEW vw_produtos AS
 SELECT
