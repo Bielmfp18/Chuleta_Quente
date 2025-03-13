@@ -14,6 +14,7 @@ if (empty($clientecpf)) {
 // utilize a condição de igualdade no SQL.
 $lista = $conn->query("SELECT * FROM reserva WHERE cliente_cpf LIKE '%$clientecpf%'");
 $numrow = $lista->num_rows;
+$row = $lista->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
