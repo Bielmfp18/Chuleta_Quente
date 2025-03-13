@@ -46,7 +46,7 @@ $row = $lista->fetch_assoc();
                         <th class="text-center">HORÁRIO</th>
                         <th class="text-center">NÚMERO DE PESSOAS</th>
                         <th class="text-center">MOTIVO</th>
-                        <th class="hidden">STATUS</th>
+                        <th class="text-center">STATUS</th>
                         <th>
                         <th>
                             <a href="../cliente/pedido_reserva.php" target="_self" class="btn btn-primary btn-block btn-xs" role="button">
@@ -69,6 +69,9 @@ $row = $lista->fetch_assoc();
                             <td><?php echo isset($row['num_pessoas']) ? $row['num_pessoas'] : "Sem número de pessoas"; ?></td>
                             <td><?php echo isset($row['motivo']) ? $row['motivo'] : "Sem motivo"; ?></td>
                             <td class="hidden"> <?php echo isset($row['status']) ? $row['status'] : "Sem status"; ?></td>
+                            <td class="text-center">
+                                <?php echo (isset($row['ativo']) ? (($row['ativo'] == 1) ? "Confirmado" : (($row['ativo'] == 2) ? "Expirado" : "Negado")) : "Sem comfirmação"); ?>
+                            </td>
                         </tr>
                     <?php }  while ($row = $lista->fetch_assoc()); ?>
                 </tbody>
