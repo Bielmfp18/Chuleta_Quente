@@ -71,7 +71,7 @@
             $imgW = $w + 2*$outerFrame;
             $imgH = $h + 2*$outerFrame;
 
-            $base_image =ImageCreate($imgW, $imgH);
+            $base_image = ImageCreate($imgW, $imgH);
 
             // convert a hexadecimal color code into decimal format (red = 255 0 0, green = 0 255 0, blue = 0 0 255)
             $r1 = round((($fore_color & 0xFF0000) >> 16), 5);
