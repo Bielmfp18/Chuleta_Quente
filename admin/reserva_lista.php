@@ -69,10 +69,10 @@ $numrow = $lista->num_rows;
 
                 <div class="form-group" style="margin-left: 10px;">
                     <label for="status">STATUS:</label>
-                    <select name="status" id="status" class="form-control" style="height: 34px;">
+                    <select name="status" id="status" class="form-control">
                         <option value="">TUDO</option>
-                        <option value="1" <?php if ($status === '1') echo 'selected'; ?>>ATIVAS</option>
-                        <option value="0" <?php if ($status === '0') echo 'selected'; ?>>DESATIVAS</option>
+                        <option value="1" <?php if ($status === '1') echo 'selected'; ?>>ATIVADAS</option>
+                        <option value="0" <?php if ($status === '0') echo 'selected'; ?>>DESATIVADAS</option>
                     </select>
                 </div>
 
