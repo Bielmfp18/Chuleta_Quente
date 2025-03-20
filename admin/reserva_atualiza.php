@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
                                     </span>
-                                    <input type="date" name="data" value="<?php echo $row['data']; ?>" id="data" value="2025-03-05" class="form-control" required autocomplete="off">
+                                    <input type="date" name="data"  value="<?php echo date('Y-m-d'); ?>"  id="data" class="form-control" required autocomplete="off">
                                 </div>
                                 <br>
                                 <!-- Campo Horário -->
