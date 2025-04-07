@@ -1,4 +1,4 @@
-<?php include '../cliente/acesso_cliente.php';?>
+<?php include '../admin/acesso_com.php';?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
 <nav class="nav navbar-inverse">
@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <button type="button" class="btn btn-danger navbar-btn disabled" style="cursor: default;">
-                        Olá, <?php echo($_SESSION['login_cliente']); ?>!
+                        Olá, <?php echo($_SESSION['login_usuario']); ?>!
                     </button>
                 </li>
                 <li class="active"><a href="index.php">CLIENTE</a></li>
