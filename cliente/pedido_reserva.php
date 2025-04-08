@@ -1,6 +1,6 @@
 <?php
 
-include '../cliente/acesso_cliente.php';
+include '../admin/acesso_com.php';
 include '../conn/connect.php';
 
 

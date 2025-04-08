@@ -18,7 +18,6 @@ include '../admin/acesso_com.php';
 
 <body>
     <?php
-    include 'menu_adm_cliente.php';
     include 'reserva_lista_cliente.php';
     ?>
 

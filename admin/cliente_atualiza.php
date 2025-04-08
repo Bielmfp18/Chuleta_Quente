@@ -4,33 +4,56 @@ include 'acesso_com.php';
 
 // Busca as informações do cliente no Banco de Dados.
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql_cliente = $conn->query("SELECT * FROM cliente WHERE id = $id");
-    $cliente = $sql_cliente->fetch_assoc();
-}
-// Busca as informações do usuário no Banco de Dados.
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql_usuarios = $conn->query("SELECT * FROM usuarios WHERE id = $id");
-    $usuarios = $sql_usuarios->fetch_assoc();
+    $id_cliente = (int) $_GET['id'];
+
+    // Busca dados do cliente
+    $sql_cliente = $conn->prepare("SELECT * FROM cliente WHERE id = ?");
+    $sql_cliente->bind_param("i", $id_cliente);
+    $sql_cliente->execute();
+    $cliente = $sql_cliente->get_result()->fetch_assoc();
+    $sql_cliente->close();
+
+    // Agora que temos $cliente['usuario_id'], buscamos o usuário correto
+    $id_usuario = (int) $cliente['usuario_id'];
+    $sql_usuarios = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+    $sql_usuarios->bind_param("i", $id_usuario);
+    $sql_usuarios->execute();
+    $usuarios = $sql_usuarios->get_result()->fetch_assoc();
+    $sql_usuarios->close();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_GET['id'];  
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $cpf = $_POST['cpf'];
-    $senha = $_POST['senha'];
+    $id_cliente   = (int) $_GET['id'];
+    $id_usuario   = (int) $cliente['usuario_id'];
+    $nome         = $_POST['nome'];
+    $email        = $_POST['email'];
+    $cpf          = $_POST['cpf'];
+    $login        = $_POST['login'];
+    $senha_plain  = $_POST['senha'];
+    $senha_md5    = md5($senha_plain);
+    $nivel_usuario= $_POST['nivel'];
 
-    $id_usuario = $_GET['id']; 
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
-    $nivel_usuario = $_POST['nivel'];
+    // Atualiza tabela usuarios
+    $upd_user = $conn->prepare("
+        UPDATE usuarios
+        SET login = ?, senha = ?, nivel = ?
+        WHERE id = ?
+    ");
+    $upd_user->bind_param("sssi", $login, $senha_md5, $nivel_usuario, $id_usuario);
+    $ok_user = $upd_user->execute();
+    $upd_user->close();
 
-    $loginresult = $conn->query("UPDATE usuarios SET login = '$login', senha = md5('$senha'), nivel = '$nivel_usuario' WHERE id = $id_usuario");
-    $clienteResult = $conn->query("UPDATE cliente SET usuario_id = '$id_usuario', nome = '$nome', email = '$email', cpf ='$cpf', senha = md5('$senha') WHERE id = $id");
+    // Atualiza tabela cliente
+    $upd_cli = $conn->prepare("
+        UPDATE cliente
+        SET usuario_id = ?, nome = ?, email = ?, cpf = ?, senha = ?
+        WHERE id = ?
+    ");
+    $upd_cli->bind_param("issssi", $id_usuario, $nome, $email, $cpf, $senha_md5, $id_cliente);
+    $ok_cli = $upd_cli->execute();
+    $upd_cli->close();
 
-    if ($clienteResult) {
+    if ($ok_user && $ok_cli) {
         echo "<script>
             alert('Cliente atualizado com sucesso!');
             window.location.href='../admin/cliente_lista.php';
@@ -38,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>
             alert('Erro ao tentar atualizar o cliente.');
-            window.location.href='cliente_atualiza.php';
+            window.location.href='cliente_atualiza.php?id={$id_cliente}';
         </script>";
     }
 }
@@ -62,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
                 <h2 class="breadcrumb text-success">
-                    <a href="cliente_lista.php" style = "text-decoration: none;">
+                    <a href="cliente_lista.php" style="text-decoration: none;">
                         <button class="btn btn-success" type="button">
                             <span class="fas fa-chevron-left" aria-hidden="true"></span>
                         </button>
@@ -71,70 +94,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-success">
-                        <form action="cliente_atualiza.php<?php echo isset($_GET['id']) ? '?id=' . $_GET['id'] : ''; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
+                        <form action="cliente_atualiza.php?id=<?php echo $id_cliente; ?>" method="POST" name="form_atualiza_usuario" id="form_atualiza_usuario">
+                            <!-- Nome de Usuário -->
                             <label for="login">Nome de Usuário:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="login" maxlength="80" placeholder="Digite o novo login" class="form-control"  autocomplete="on">
+                                <input type="text" name="login" maxlength="80" placeholder="Digite o novo login" class="form-control" value="<?php echo htmlspecialchars($usuarios['login']); ?>" required>
                             </div>
                             <br>
 
+                            <!-- Senha de Usuário -->
                             <label for="senha">Senha:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-lock" aria-hidden="true"></span>
                                 </span>
-                                <input type="password" name="senha" value="" id="senha" maxlength="80" placeholder="Digite a nova senha" class="form-control" autocomplete="off">
+                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a nova senha" class="form-control" required>
                             </div>
                             <br>
 
+                            <!-- Nível do usuário -->
                             <label for="nivel">Nível do usuário</label>
                             <div class="input-group">
-                                <label for="nivel_c" class="radio-inline">
-                                    <input type="radio" name="nivel" id="nivel" value="com" checked>Comum
+                                <label class="radio-inline">
+                                    <input type="radio" name="nivel" value="com" <?php if($usuarios['nivel']==='com') echo 'checked'; ?>>Comum
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="nivel" value="sup" <?php if($usuarios['nivel']==='sup') echo 'checked'; ?>>Supervisor
                                 </label>
                             </div>
                             <br>
 
+                            <!-- Nome do Cliente -->
                             <label for="nome">Nome:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="fas fa-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="nome" id="nome" value="<?php echo $cliente['nome']; ?>" maxlength="80" placeholder="Digite o nome do cliente." class="form-control" required autocomplete="off">
+                                <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($cliente['nome']); ?>" maxlength="80" placeholder="Digite o nome do cliente." class="form-control" required>
                             </div>
                             <br>
 
+                            <!-- Email do Cliente -->
                             <label for="email">Email:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                <span class="fas fa-envelope text-success" aria-hidden="true"></span>
+                                    <span class="fas fa-envelope text-success" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="email" id="email" value="<?php echo $cliente['email']; ?>" class="form-control" required autocomplete="off" placeholder="Digite o email.">
+                                <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($cliente['email']); ?>" class="form-control" required>
                             </div>
                             <br>
 
+                            <!-- CPF do Cliente -->
                             <label for="cpf">CPF:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-edit text-success" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="cpf" id="cpf" value="<?php echo $cliente['cpf']; ?>" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+                                <input type="text" name="cpf" id="cpf" value="<?php echo htmlspecialchars($cliente['cpf']); ?>" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" class="form-control" required>
                             </div>
                             <br>
-                                 <!-- input senha_cliente -->
-                                 <label for="senha">Senha:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="fas fa-lock text-success" aria-hidden="true"></span>
-                                </span>
-                                <input type="password" name="senha" id="senha" maxlength="80" placeholder="Digite a senha." class="form-control" autocomplete="off" required>
-                            </div><!-- fecha input-group -->
-                            <br>
 
-                            <input type="submit" value="Atualizar" role="button" name="enviar" id="enviar" class="btn btn-block btn-success">
+                            <!-- Botão de Enviar -->
+                            <input type="submit" value="Atualizar" class="btn btn-block btn-success">
                         </form>
                     </div>
                 </div>
