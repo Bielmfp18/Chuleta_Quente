@@ -1,2 +1,5 @@
 # Modelophp
-Site feito com PHP, Java Script, estruturado em html, estilizado em Bootstrap, com Banco de Dados (SQL).
+- Site feito com PHP e Java Script;
+- Estruturado em html;
+- Estilizado em Bootstrap;
+- Banco de Dados (SQL).
