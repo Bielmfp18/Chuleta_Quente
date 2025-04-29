@@ -9,7 +9,8 @@
 🎨 Bootstrap para o design e responsividade
 
 🗄️ MySQL como banco de dados
-
+<hr>
 📋 Descrição
+<hr>
 Projeto focado em facilitar o controle administrativo de uma churrascaria, integrando funcionalidades de gestão de pedidos, cardápio e atendimento.
 
