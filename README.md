@@ -1,7 +1,7 @@
 🛠️ ModeloPHP
 <p>Sistema web para administração e gerenciamento de uma churrascaria.</p>
-🚀 Tecnologias Utilizadas
-<hr>
+🚀 <h2>Tecnologias Utilizadas</h2>
+
 🖥️ PHP e JavaScript para o desenvolvimento do back-end e interatividade
 
 🧱 HTML5 para a estrutura das páginas
