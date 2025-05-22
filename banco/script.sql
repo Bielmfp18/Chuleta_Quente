@@ -122,40 +122,40 @@ MODIFY
   `id` int(11) NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 10;
 
--- Estrutura para tabela `tipos`
-CREATE TABLE `tipos` (
-  `id` int(11) NOT NULL,
-  `sigla` varchar(3) NOT NULL,
-  `rotulo` varchar(15) NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+-- -- Estrutura para tabela `tipos`
+-- CREATE TABLE `tipos` (
+--   `id` int(11) NOT NULL,
+--   `sigla` varchar(3) NOT NULL,
+--   `rotulo` varchar(15) NOT NULL
+-- ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
--- Despejando dados para a tabela `tipos`
-INSERT INTO
-  `tipos` (`id`, `sigla`, `rotulo`)
-VALUES
-  (1, 'chu', 'Churrasco'),
-  (2, 'sob', 'Sobremesa');
+-- -- Despejando dados para a tabela `tipos`
+-- INSERT INTO
+--   `tipos` (`id`, `sigla`, `rotulo`)
+-- VALUES
+--   (1, 'chu', 'Churrasco'),
+--   (2, 'sob', 'Sobremesa');
 
--- Índices de tabela `tipos`
-ALTER TABLE
-  `tipos`
-ADD
-  PRIMARY KEY (`id`);
+-- -- Índices de tabela `tipos`
+-- ALTER TABLE
+--   `tipos`
+-- ADD
+--   PRIMARY KEY (`id`);
 
--- AUTO_INCREMENT de tabela `tipos`
-ALTER TABLE
-  `tipos`
-MODIFY
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
+-- -- AUTO_INCREMENT de tabela `tipos`
+-- ALTER TABLE
+--   `tipos`
+-- MODIFY
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   AUTO_INCREMENT = 3;
 
--- Estrutura para tabela `tipos`
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `login` varchar(30) NOT NULL,
-  `senha` varchar(32) NOT NULL,
-  `nivel` ENUM('sup', 'com') NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+-- -- Estrutura para tabela `tipos`
+-- CREATE TABLE `usuarios` (
+--   `id` int(11) NOT NULL,
+--   `login` varchar(30) NOT NULL,
+--   `senha` varchar(32) NOT NULL,
+--   `nivel` ENUM('sup', 'com') NOT NULL
+-- ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 -- Inserindo Dados na Tabela `usuarios'
 INSERT INTO

@@ -1,9 +1,9 @@
 <?php 
 
-$host = "127.0.0.1"; //Ou localhost
-$database = "tinsphpdb01";
-$user = "root";
-$pass = "";
+$host = "sql102.infinityfree.com"; //Ou localhost
+$database = "chuleta-quente";
+$user = "if0_39054069";
+$pass = "pPWamFJPmaUX";
 $charset = "utf8";
 $port = "3306";
 
