@@ -1,7 +1,7 @@
 <?php 
 
 $host = "sql102.infinityfree.com"; //Ou localhost
-$database = "chuleta-quente";
+$database = "if0_39054069_chuleta_quente";
 $user = "if0_39054069";
 $pass = "pPWamFJPmaUX";
 $charset = "utf8";
