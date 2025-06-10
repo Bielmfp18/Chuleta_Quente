@@ -1,4 +1,3 @@
-
 <main class="container">
 <h1 class="breadcrumb">Área Administrativa</h1>
 <div class="row"><!-- manter os elementos na linha -->
@@ -111,42 +110,45 @@
     </div><!-- fecha thumbnail -->
 </div><!-- fecha col -->
 <!-- fecha ADM USUÁRIOS -->
+
 </div><!-- fecha row -->
+
+<div class="row"><!-- nova linha para CLIENTES e RESERVAS -->
 
 <!-- ADM CLIENTES -->
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail alert-success">
         <img src="../imagens/icone_cliente.png" alt="">
         <br>
-<div class="alert-success">
+        <div class="alert-success">
 
-<div class="btn-group btn-group-justified" role="group">
-    <div class="btn-group">
-        <button class="btn btn-default disabled" role="alert" style="cursor: default;">
-      CLIENTES
-        </button>
-    </div><!-- fecha btn-group -->
-</div><!-- fecha btn-group-justified -->
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group">
+                    <button class="btn btn-default disabled" role="alert" style="cursor: default;">
+                        CLIENTES
+                    </button>
+                </div><!-- fecha btn-group -->
+            </div><!-- fecha btn-group-justified -->
 
-<div class="btn-group btn-group-justified" role="group">
-    <div class="btn-group">
-        <a href="cliente_lista.php">
-            <button class="btn btn-success">
-                LISTAR
-            </button>
-        </a>
-    </div><!-- fecha btn-group -->
-    <div class="btn-group">
-        <a href="cliente_insere.php">
-            <button class="btn btn-success">
-                INSERIR
-            </button>
-        </a>
-        </div><!-- fecha btn-group -->
-</div><!-- fecha btn-group-justified -->
+            <div class="btn-group btn-group-justified" role="group">
+                <div class="btn-group">
+                    <a href="cliente_lista.php">
+                        <button class="btn btn-success">
+                            LISTAR
+                        </button>
+                    </a>
+                </div><!-- fecha btn-group -->
+                <div class="btn-group">
+                    <a href="cliente_insere.php">
+                        <button class="btn btn-success">
+                            INSERIR
+                        </button>
+                    </a>
+                </div><!-- fecha btn-group -->
+            </div><!-- fecha btn-group-justified -->
 
-</div><!-- fecha alert-success -->
-</div><!-- fecha thumbnail -->
+        </div><!-- fecha alert-success -->
+    </div><!-- fecha thumbnail -->
 </div><!-- fecha col -->
 <!-- fecha ADM CLIENTES -->
 
@@ -185,6 +187,7 @@
         </div><!-- fecha alert-info -->
     </div><!-- fecha thumbnail -->
 </div><!-- fecha col -->
-<!-- fecha ADM CLIENTES -->
+<!-- fecha ADM RESERVAS -->
 
+</div><!-- fecha row -->
 </main>

@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="defaultNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button type="button" class="btn btn-danger navbar-btn disabled" style="cursor: default;">
+                    <button type="button" class="btn btn-danger navbar-btn disabled" style="cursor: default; margin-top: 10px; margin-right: 10px;">
                         Olá, <?php echo($_SESSION['login_usuario']); ?>!
                     </button>
                 </li>
