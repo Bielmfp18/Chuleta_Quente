@@ -19,7 +19,7 @@ $numrow = $lista->num_rows;
 <body>
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h1 class="breadcrumb alert-info">Lista de Usuário</h1>
+        <h1 class="breadcrumb alert-info" style="text-align:center;">Lista de Usuário</h1>
         <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
             <table class="table table-hover table-condensed tbopacidade">
                 <thead>

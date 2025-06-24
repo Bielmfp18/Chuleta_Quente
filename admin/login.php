@@ -6,10 +6,10 @@ if ($_POST) {
     $senha     = $_POST['senha'];
     $senha_md5 = md5($senha);             // senha md5 para usuários
 
-    if (!isset($_SESSION)) {
-        session_name('chulettaaa');
-        session_start();
-    }
+    // if (!isset($_SESSION)) {
+    //     session_name('chulettaaa');
+    //     session_start();
+    // }
 
     // 1) Tenta usuário (tabela usuarios)
     $sqlU = "SELECT * FROM usuarios WHERE login = ? AND senha = ?";

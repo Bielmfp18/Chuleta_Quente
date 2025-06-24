@@ -53,7 +53,7 @@ $numrow = $lista->num_rows;
 <body class="">
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h1 class="breadcrumb alert-primary">Lista de Reservas</h1>
+        <h1 class="breadcrumb alert-primary" style="text-align:center;">Lista de Reservas</h1>
         <!-- FORMULÁRIO DO FILTRO -->
         <div class="container text-center">
             <form action="" method="GET" class="form-inline" style="margin-bottom: 50px;">
@@ -83,15 +83,15 @@ $numrow = $lista->num_rows;
         <div class="table-responsive container-centralizado"><!-- dimensionamento -->
             <table class="table table-hover  tbopacidade text-center">
                 <thead>
-                    <tr>
+                    <tr style = "font-size: 12px; font-weight: bold !important;">
                         <th class="hidden">ID</th>
                         <th class="text-center">CLIENTE_NOME</th>
                         <th class="text-center">CLIENTE_CPF</th>
                         <th class="text-center">CLIENTE_EMAIL</th>
                         <th class="text-center">DATA</th>
                         <th class="text-center">HORÁRIO</th>
-                        <th class="text-center">NÚMERO DE PESSOAS</th>
-                        <th class="text-center">NÚMERO DA MESA</th>
+                        <th class="text-center">Nº DE PESSOAS</th>
+                        <th class="text-center">Nº DA MESA</th>
                         <th class="text-center">MOTIVO</th>
                         <th class="text-center">STATUS</th>
                         <th>

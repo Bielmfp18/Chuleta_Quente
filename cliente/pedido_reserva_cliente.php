@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Pedido de Reserva
                 </h2>
     </main>
-    
+<!--     
     <main class="container4">
         <div class="row">   
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -96,12 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <p><strong>4.</strong> É necessário preencher todos os campos de cadastro e reserva.</p>
                     </div>
                     <div class="panel-footer text-center">
-                        <!-- Botão para direcionar para o formulário de pedido
+                         Botão para direcionar para o formulário de pedido
                         <a href="../cliente/pedido_reserva.php" class="btn btn-primary btn-lg">
                             Aceito as Regras e Fazer o Pedido
-                        </a> -->
+                        </a> 
 
-    </main>
+    </main> -->
 
     <main class="container4">
         <div class="row">
