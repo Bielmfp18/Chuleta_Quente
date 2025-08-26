@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <button type="button" class="btn btn-danger navbar-btn disabled" style="cursor: default;">
-                        Olá, <?php echo($_SESSION['login_usuario']); ?>!
+                        Olá, <?php echo($_SESSION['login_cliente']); ?>!
                     </button>
                 </li>
                 <li class="active"><a href="index.php">CLIENTE</a></li>

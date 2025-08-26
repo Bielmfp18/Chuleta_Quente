@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "<script>
                 alert('Nova reserva inserida com sucesso!');
-                window.location.href='reserva_lista.php';
+                window.location.href='index.php';
               </script>";
     } catch (mysqli_sql_exception $e) {
         // Se o erro for de duplicidade (código 1062), exibe a mensagem correspondente

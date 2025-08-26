@@ -1,4 +1,3 @@
-
 <?php
 
 // include '../admin/acesso_com.php';
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         echo "<script>
                 alert('Pedido de reserva realizado com sucesso!');
-                window.location.href='../index.php';
+                window.location.href='index.php';
               </script>";
     } catch (mysqli_sql_exception $e) {
         // Se o erro for de duplicidade (código 1062), exibe a mensagem correspondente
@@ -81,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Pedido de Reserva
                 </h2>
     </main>
-<!--     
+    <!--     
     <main class="container4">
         <div class="row">   
             <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
@@ -182,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             <!-- Campo Status oculto (1 = ativo) -->
                             <input type="hidden" name="status" id="status" value="0">
-<br><br>
+                            <br><br>
                             <div class="row">
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <!-- Botão de Cancelar -->
@@ -194,11 +193,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                                 <br><br><br><br>
                                 <p class="text-center">
-                                     <small>
-                                         <br>
+                                    <small>
+                                        <br>
                                         Para obter acesso a lista de seus pedidos de reserva é necessário logar em sua conta. <br> Gostaria de realizar seu login? <a href="login_cliente.php">Clique Aqui</a>
-                                     </small>
-                                 </p>
+                                    </small>
+                                </p>
                             </div>
                         </div>
                     </div>

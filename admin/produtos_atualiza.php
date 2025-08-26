@@ -153,7 +153,7 @@ if (isset($_GET['id'])) {
                                     <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                                 </span>
                                 <label for="imagem" style=" border: none; padding: 10px 15px; cursor: pointer;" class="btn btn-block btn-danger">Escolher Imagem</label>
-                                <input type="file" name="imagem" id="imagem"  required style="display: none;">
+                                <input type="file" name="imagem" id="imagem"  style="display: none;">
                             </div>
                             <br>
 
