@@ -1,7 +1,7 @@
 <?php 
 
 $host = "127.0.0.1"; //Ou localhost
-$database = "tinsphpdb01";
+$database = "chuleta_quente";
 $root = "root";
 $pass = "";
 $charset = "utf8";
