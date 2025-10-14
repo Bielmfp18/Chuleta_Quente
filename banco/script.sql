@@ -1,7 +1,7 @@
 -- Database: 
-CREATE DATABASE IF NOT EXISTS `tinsphpdb01` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `chuleta_quente` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-USE `tinsphpdb01`;
+USE `chuleta_quente`;
 
 -- --------------------------------------------------------
 -- Estrutura da tabela `produtos`
